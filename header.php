@@ -21,7 +21,7 @@
     </form>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#"><button class="btn btn-secondary my-2 my-sm-0 text-light">Sign In</button></a>
+        <a class="nav-link" href="login.php"><button class="btn btn-secondary my-2 my-sm-0 text-light">Sign In</button></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><button class="btn btn-light my-2 my-sm-0">Sign Up</button></a>
