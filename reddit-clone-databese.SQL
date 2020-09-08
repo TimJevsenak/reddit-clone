@@ -1,14 +1,4 @@
-﻿/*
-Created: 9/2/2020
-Modified: 9/2/2020
-Model: MySQL 8.0
-Database: MySQL 8.0
-*/
-
--- Create tables section -------------------------------------------------
-
--- Table users
-
+﻿
 CREATE TABLE `users`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -25,8 +15,6 @@ CREATE TABLE `users`
   PRIMARY KEY (`id`)
 )
 ;
-
--- Table communities
 
 CREATE TABLE `communities`
 (
@@ -45,8 +33,6 @@ CREATE TABLE `communities`
 CREATE INDEX `IX_Relationship5` ON `communities` (`user_id`)
 ;
 
--- Table comments
-
 CREATE TABLE `comments`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -59,8 +45,6 @@ CREATE TABLE `comments`
 
 CREATE INDEX `IX_Relationship3` ON `comments` (`post_id`)
 ;
-
--- Table posts
 
 CREATE TABLE `posts`
 (
@@ -76,8 +60,6 @@ CREATE TABLE `posts`
 
 CREATE INDEX `IX_Relationship4` ON `posts` (`community_id`)
 ;
-
--- Table post_votes
 
 CREATE TABLE `post_votes`
 (
@@ -96,13 +78,13 @@ CREATE INDEX `IX_Relationship1` ON `post_votes` (`user_id`)
 CREATE INDEX `IX_Relationship2` ON `post_votes` (`post_id`)
 ;
 
--- Table subscriptions
-
 CREATE TABLE `subscriptions`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
   `community_id` Int,
   `user_id` Int,
+  `dateCreated` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateUpdated` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 )
 ;
@@ -113,8 +95,6 @@ CREATE INDEX `IX_Relationship6` ON `subscriptions` (`community_id`)
 CREATE INDEX `IX_Relationship7` ON `subscriptions` (`user_id`)
 ;
 
--- Table awards
-
 CREATE TABLE `awards`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -123,8 +103,6 @@ CREATE TABLE `awards`
   PRIMARY KEY (`id`)
 )
 ;
-
--- Table awards_posts
 
 CREATE TABLE `awards_posts`
 (
@@ -142,8 +120,6 @@ CREATE INDEX `IX_Relationship8` ON `awards_posts` (`post_id`)
 CREATE INDEX `IX_Relationship9` ON `awards_posts` (`award_id`)
 ;
 
--- Table awards_comments
-
 CREATE TABLE `awards_comments`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -159,8 +135,6 @@ CREATE INDEX `IX_Relationship12` ON `awards_comments` (`award_id`)
 
 CREATE INDEX `IX_Relationship13` ON `awards_comments` (`comment_id`)
 ;
-
--- Table comment_votes
 
 CREATE TABLE `comment_votes`
 (
@@ -178,8 +152,6 @@ CREATE INDEX `IX_Relationship14` ON `comment_votes` (`user_id`)
 
 CREATE INDEX `IX_Relationship16` ON `comment_votes` (`comment_id`)
 ;
-
--- Create foreign keys (relationships) section -------------------------------------------------
 
 ALTER TABLE `post_votes` ADD CONSTRAINT `Relationship1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
