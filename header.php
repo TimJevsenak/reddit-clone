@@ -23,13 +23,29 @@ include_once './session.php';
       <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="login.php"><button class="btn btn-secondary my-2 my-sm-0 text-light">Sign In</button></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.php"><button class="btn btn-light my-2 my-sm-0">Sign Up</button></a>
-      </li>
-    </ul>
+    <?php
+      if(!isset($_SESSION['user_id']))
+      {
+        echo '
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="login.php"><button class="btn btn-secondary my-2 my-sm-0 text-light">Sign In</button></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register.php"><button class="btn btn-light my-2 my-sm-0">Sign Up</button></a>
+          </li>
+        </ul>
+        ';
+      }
+      else{
+        echo '
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="logout.php"><button class="btn btn-info my-2 my-sm-0">Log Out</button></a>
+          </li>
+        </ul>
+        ';
+      }
+    ?>
   </div>
 </nav>
