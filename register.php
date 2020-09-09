@@ -6,14 +6,16 @@ include_once './header.php';
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4 my-5">
-            <form class="form-signin">
+            <form class="form-signin" action="user_insert.php" method="post">
                 <h1 class="h2 my-4 font-weight-normal text-center">Sign Up</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" required="" autofocus="">
+                <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" required="" autofocus="">
                 <label for="inputUsername" class="sr-only">Username</label>
-                <input type="text" id="inputUsername" class="form-control my-1" placeholder="Username" required="">
+                <input name="username" type="text" id="inputUsername" class="form-control my-1" placeholder="Username" required="">
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
+                <input name="password" type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
+                <label for="inputPasswordConfirm" class="sr-only">Confirm password</label>
+                <input name="password_confirm" type="password" id="inputPasswordConfirm" class="form-control my-1" placeholder="Confirm password" required="">
                 <div class="checkbox my-3 text-center">
                 <label>
                 <input type="checkbox" value="remember-me"> Remember me
