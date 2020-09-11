@@ -43,8 +43,12 @@ include_once './session.php';
         <li class="nav-item">
             <a class="nav-link" href="logout.php"><button class="btn btn-info my-2 my-sm-0">Log Out</button></a>
           </li>
-        </ul>
         ';
+        echo '<li class="nav-item">
+              <a class="nav-link" href="logout.php">';
+        echo $_SESSION['username'];
+        echo '</a>
+        </li>';
       }
     ?>
   </div>
