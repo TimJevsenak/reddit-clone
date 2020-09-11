@@ -5,8 +5,8 @@ include_once './header.php';
 <div class="container my-5 text-center">
     <div class="row">
         <div class="col">
-            <h1>Title of front page<i class="fad fa-bookmark"></i></h1>
-            <p>Lorem ipsum....................................</p>
+            <h1 class="my-1">Home <i class="far fa-home"></i></h1>
+            <p class="h4 my-1 text-uppercase">Latest posts</p>
             <?php if(isset($_SESSION['user_id']))
             {
                 echo "Welcome ";
