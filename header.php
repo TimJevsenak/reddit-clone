@@ -45,7 +45,7 @@ include_once './session.php';
           </li>
         ';
         echo '<li class="nav-item">
-              <a class="nav-link" href="#">';
+              <a class="nav-link" href="profile.php">';
         echo $_SESSION['username'];
         echo '</a>
         </li>';
