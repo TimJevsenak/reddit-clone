@@ -1,5 +1,6 @@
 <?php
 include_once './session.php';
+include_once './database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,41 +15,40 @@ include_once './session.php';
 </head>
 <body>
 
-<?php 
-    $query = "SELECT * FROM users WHERE id=?";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute($_SESSION['user_id']);
-    if ($stmt->rowCount() == 1) 
-    {
-        $user = $stmt->fetch();
-    }
-?>
-
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
-        <div class="col-4 my-5">
+        <div class="col-4 my-5 text-right">
             <form class="form-signin" action="user_update.php" method="post">
-                <h1 class="h2 my-4 font-weight-normal text-center">Sign Up</h1>
+                <h1 class="h2 mb-4 font-weight-normal text-center">Update profile</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" value="" required="" autofocus="">
+                <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" value="<?php echo $_SESSION['email']; ?>" required="" autofocus="">
                 <label for="inputUsername" class="sr-only">Username</label>
-                <input name="username" type="text" id="inputUsername" class="form-control my-1" placeholder="Username" required="">
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input name="password" type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
-                <label for="inputPasswordConfirm" class="sr-only">Confirm password</label>
-                <input name="password_confirm" type="password" id="inputPasswordConfirm" class="form-control my-1" placeholder="Confirm password" required="">
+                <input name="username" type="text" id="inputUsername" class="form-control my-1" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" required="">
+                <label for="inputPasswordNew" class="sr-only">Password</label>
+                <input name="password_new" type="password" id="inputPasswordNew" class="form-control my-1" placeholder="New password" required="">
+                <label for="inputPasswordNewConfirm" class="sr-only">Confirm password</label>
+                <input name="password_new_confirm" type="password" id="inputPasswordNewConfirm" class="form-control my-1" placeholder="Confirm new password" required="">
+                <label for="inputPassword" class="sr-only">Current password</label>
+                <input name="password_new_confirm" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password" required="">
+                <label for="displayName" class="sr-only">Display name</label>
+                <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
+                <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
+                <label for="avatar" class="sr-only">Avatar</label>
+                <input name="avatar" type="file" id="avatar" class="form-control-file my-1">
                 <div class="checkbox my-3 text-center">
                 <label>
                 <input type="checkbox" value="remember-me"> Remember me
                 </label>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Sign Up</button>
+                    <button class="btn btn-success" type="submit">Update</button>
                 </div>
             </form>
         </div>
-        <div class="col-4"></div>
+        <div class="col-4 text-left mt-5">
+            <a href="index.php"><button class="btn btn-outline-info my-sm-0">Back</button></a>
+        </div>
     </div>
 </div>
 

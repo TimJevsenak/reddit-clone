@@ -15,7 +15,10 @@ if (!empty($email) && !empty($pass)) {
         $user = $stmt->fetch();
         if (password_verify($pass, $user['pass'])) {
             $_SESSION['user_id'] = $user['id']; 
-            $_SESSION['username'] = $user['username'];               
+            $_SESSION['username'] = $user['username']; 
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['displayname'] = $user['displayname'];
+            $_SESSION['description'] = $user['description'];
             header("Location: index.php");
             die();
         }
