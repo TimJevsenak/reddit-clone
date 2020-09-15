@@ -30,7 +30,7 @@ include_once './database.php';
                 <label for="inputPasswordNewConfirm" class="sr-only">Confirm password</label>
                 <input name="password_new_confirm" type="password" id="inputPasswordNewConfirm" class="form-control my-1" placeholder="Confirm new password" required="">
                 <label for="inputPassword" class="sr-only">Current password</label>
-                <input name="password_new_confirm" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password" required="">
+                <input name="password_current" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password" required="">
                 <label for="displayName" class="sr-only">Display name</label>
                 <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
