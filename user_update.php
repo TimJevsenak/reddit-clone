@@ -12,8 +12,9 @@
     if ($stmt->rowCount() == 1) {
         $user = $stmt->fetch();
     }
+
     else{
-        header("Location: profile.php")
+        header("Location: profile.php");
     }
 
     if (password_verify($password_current, $user['pass'])) {
