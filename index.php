@@ -10,7 +10,8 @@ include_once './header.php';
             <?php if(isset($_SESSION['user_id']))
             {
                 echo "Welcome ";
-                echo $_SESSION['displayname'] . '!'; 
+                echo $_SESSION['displayname'] . '! <br>';
+                echo '<img src="uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid img-thumbnail" alt="Avatar">'; 
             }
             ?>
         </div>
