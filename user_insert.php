@@ -17,6 +17,15 @@ if (!empty($username)
             . "VALUES (?,?,?)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$username,$email,$pass]);
+
+    $query2 = "SELECT * FROM users WHERE email=?";
+    $stmt = $pdo->prepare($query2);
+    $stmt->execute([$email]);
+
+    if ($stmt->rowCount() == 1) {
+        $user = $stmt->fetch();
+    }
+    mkdir("uploads/".$user['id']);
     
     header("Location: login.php");
 }

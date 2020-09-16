@@ -1,5 +1,5 @@
 <?php
-$target_dir = "uploads/";
+$target_dir = "uploads/".$_SESSION['user_id']."/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

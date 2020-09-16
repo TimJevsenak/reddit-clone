@@ -36,7 +36,7 @@
                 $pass = password_hash($password_current, PASSWORD_DEFAULT);
             }
 
-            $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=? WHERE email=?;";
+            $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
             $stmt = $pdo->prepare($query2);
             $stmt->execute([$username,$email,$pass,$displayname,$descripton,$avatar,$email]);
 
@@ -52,7 +52,7 @@
             $_SESSION['description'] = $user2['description'];
             $_SESSION['avatar'] = $user2['avatar'];
             echo 'succes!';
-            header("refresh:10;url=profile.php");
+            header("refresh:2;url=profile.php");
         }
         else{
             echo 'Something went wrong3.';
