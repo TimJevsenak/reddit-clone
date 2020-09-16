@@ -1,6 +1,7 @@
 <?php 
     include_once './database.php';
     include_once './session.php';
+    include_once './file_upload.php';
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -9,7 +10,7 @@
     $password_new_confirm = $_POST['password_new_confirm'];
     $displayname=$_POST['displayName'];
     $descripton=$_POST['description'];
-    $avatar=$_POST['avatar'];
+    $avatar=$_FILES["image"]["name"];
 
     if($password_new == $password_new_confirm)
     {
@@ -51,7 +52,7 @@
             $_SESSION['description'] = $user2['description'];
             $_SESSION['avatar'] = $user2['avatar'];
             echo 'succes!';
-            header("refresh:2;url=profile.php");
+            header("refresh:10;url=profile.php");
         }
         else{
             echo 'Something went wrong3.';

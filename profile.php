@@ -21,7 +21,7 @@ include_once './database.php';
         <a href="index.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         </div>
         <div class="col-4 my-5 text-right">
-            <form class="form-signin" action="user_update.php" method="post">
+            <form class="form-signin" action="user_update.php" method="post" enctype="multipart/form-data">
                 <h1 class="h2 mb-4 font-weight-normal text-center">Update profile</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" value="<?php echo $_SESSION['email']; ?>" required="" autofocus="">
@@ -36,15 +36,15 @@ include_once './database.php';
                 <label for="displayName" class="sr-only">Display name</label>
                 <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
-                <label for="avatar" class="sr-only">Avatar</label>
-                <input name="avatar" type="file" id="avatar" class="form-control-file my-1">
+                <label for="image" class="sr-only">Avatar</label>
+                <input name="image" type="file" id="image" class="form-control-file my-1">
                 <div class="checkbox my-3 text-center">
                 <label>
                 <input type="checkbox" value="remember-me"> Remember me
                 </label>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Update</button>
+                    <button class="btn btn-success" type="submit" name="submit">Update</button>
                 </div>
             </form>
         </div>
