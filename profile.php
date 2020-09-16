@@ -17,7 +17,9 @@ include_once './database.php';
 
 <div class="container">
     <div class="row">
-        <div class="col-4"></div>
+        <div class="col-4 mt-5">
+        <a href="index.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
+        </div>
         <div class="col-4 my-5 text-right">
             <form class="form-signin" action="user_update.php" method="post">
                 <h1 class="h2 mb-4 font-weight-normal text-center">Update profile</h1>
@@ -46,9 +48,7 @@ include_once './database.php';
                 </div>
             </form>
         </div>
-        <div class="col-4 text-left mt-5">
-            <a href="index.php"><button class="btn btn-outline-info my-sm-0">Back</button></a>
-        </div>
+        <div class="col-4"></div>
     </div>
 </div>
 

@@ -10,7 +10,7 @@ include_once './header.php';
             <?php if(isset($_SESSION['user_id']))
             {
                 echo "Welcome ";
-                echo $_SESSION['username'] . '!'; 
+                echo $_SESSION['displayname'] . '!'; 
             }
             ?>
         </div>
