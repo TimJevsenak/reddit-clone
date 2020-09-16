@@ -52,7 +52,7 @@
             $_SESSION['description'] = $user2['description'];
             $_SESSION['avatar'] = $user2['avatar'];
             echo 'succes!';
-            header("refresh:2;url=profile.php");
+            header("refresh:10;url=profile.php");
         }
         else{
             echo 'Something went wrong3.';

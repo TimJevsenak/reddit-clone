@@ -38,6 +38,9 @@ include_once './database.php';
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
                 <label for="image" class="sr-only">Avatar</label>
                 <input name="image" type="file" id="image" class="form-control-file my-1">
+                <div class="text-center">
+                    <img src="uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="Avatar">
+                </div>
                 <div class="checkbox my-3 text-center">
                 <label>
                 <input type="checkbox" value="remember-me"> Remember me
