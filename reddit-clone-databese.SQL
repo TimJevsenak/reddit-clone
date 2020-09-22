@@ -1,4 +1,5 @@
-﻿CREATE TABLE `users`
+﻿
+CREATE TABLE `users`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
   `username` Varchar(20) NOT NULL,
