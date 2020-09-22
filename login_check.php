@@ -19,6 +19,7 @@ if (!empty($email) && !empty($pass)) {
             $_SESSION['email'] = $user['email'];
             $_SESSION['displayname'] = $user['displayname'];
             $_SESSION['description'] = $user['description'];
+            $_SESSION['avatar'] = $user['avatar'];
             header("Location: index.php");
             die();
         }
