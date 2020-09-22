@@ -39,7 +39,7 @@ include_once './database.php';
                 <label for="image" class="sr-only">Avatar</label>
                 <input name="image" type="file" id="image" class="form-control-file my-1">
                 <div class="text-center">
-                    <img src="uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="Avatar" width="64" height="64">
+                    <img src="uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="No avatar yet" width="64" height="64">
                 </div>
                 <div class="checkbox my-3 text-center">
                 <label>
