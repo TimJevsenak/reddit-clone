@@ -11,10 +11,6 @@ include_once './header.php';
             {
                 echo "Welcome ";
                 echo $_SESSION['displayname'] . '! <br>';
-                if($_SESSION['avatar']!="")
-                {
-                echo '<img src="uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid img-thumbnail" alt="Avatar" width="64" height="64">';
-                } 
             }
             ?>
         </div>

@@ -42,13 +42,19 @@ include_once './session.php';
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" href="logout.php"><button class="btn btn-sm btn-info my-2 my-sm-0">Log Out</button></a>
-          </li>
-        ';
+          </li>';
         echo '<li class="nav-item">
               <a class="nav-link" href="profile.php"><button class="btn btn-sm btn-outline-light my-2 my-sm-0">';
         echo $_SESSION['username'];
-        echo '</button></a>
+        echo '</button></a></li>';
+        if($_SESSION['avatar']!="")
+        {
+        echo '
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <img src="uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid img-thumbnail" alt="Avatar" width="48" height="48">
         </li>';
+        }
       }
     ?>
   </div>
