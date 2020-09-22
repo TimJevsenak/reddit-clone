@@ -39,15 +39,11 @@ CREATE TABLE `comments`
   `text` Varchar(255) NOT NULL,
   `date` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `post_id` Int,
-  `user_id` Int,
   PRIMARY KEY (`id`)
 )
 ;
 
 CREATE INDEX `IX_Relationship3` ON `comments` (`post_id`)
-;
-
-CREATE INDEX `IX_Relationship18` ON `comments` (`user_id`)
 ;
 
 CREATE TABLE `posts`
@@ -58,15 +54,11 @@ CREATE TABLE `posts`
   `date` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `community_id` Int,
   `image` Char(255),
-  `user_id` Int,
   PRIMARY KEY (`id`)
 )
 ;
 
 CREATE INDEX `IX_Relationship4` ON `posts` (`community_id`)
-;
-
-CREATE INDEX `IX_Relationship17` ON `posts` (`user_id`)
 ;
 
 CREATE TABLE `post_votes`
@@ -91,6 +83,8 @@ CREATE TABLE `subscriptions`
   `id` Int NOT NULL AUTO_INCREMENT,
   `community_id` Int,
   `user_id` Int,
+  `dateCreated` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateUpdated` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 )
 ;
@@ -196,12 +190,6 @@ ALTER TABLE `comment_votes` ADD CONSTRAINT `Relationship14` FOREIGN KEY (`user_i
 ;
 
 ALTER TABLE `comment_votes` ADD CONSTRAINT `Relationship16` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-;
-
-ALTER TABLE `posts` ADD CONSTRAINT `Relationship17` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-;
-
-ALTER TABLE `comments` ADD CONSTRAINT `Relationship18` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
 
