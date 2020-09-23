@@ -53,7 +53,11 @@ include_once './database.php';
             </form>
         </div>
         <div class="col-4 text-center mt-5">
-            <a href="community_create.php"><button type="button" class="btn btn-outline-success">Create a community</button></a>
+            <div>
+                <h5>Communities</h5>
+                <a href="community_create.php"><button type="button" class="btn btn-outline-success">Create</button></a>
+                <a href="community_show.php"><button type="button" class="btn btn-outline-primary">Show</button></a>
+            </div>
         </div>
     </div>
 </div>
