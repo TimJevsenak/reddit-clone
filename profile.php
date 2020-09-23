@@ -38,21 +38,16 @@ include_once './database.php';
                 <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
                 <label for="image" class="sr-only">Avatar</label>
-                <div class="input-group my-3">
+                <div class="input-group mt-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Avatar</span>
                     </div>
                     <input name="image" type="file" id="image" class="form-control-file my-1">
                 </div>
-                <div class="text-center">
+                <div class="text-left">
                     <img src="user-uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="No avatar yet" width="64" height="64">
                 </div>
-                <div class="checkbox my-3 text-center">
-                <label>
-                <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                </div>
-                <div class="text-center">
+                <div class="text-center mt-3">
                     <button class="btn btn-success" type="submit" name="submit">Update</button>
                 </div>
             </form>
