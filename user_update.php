@@ -31,31 +31,51 @@
             if (password_verify($password_current, $user['pass'])) {
                 include_once './user_file_upload.php';
 
-                if($password_new != ''){
-                $pass = password_hash($password_new, PASSWORD_DEFAULT);
+                if($uploadOk!=0){
+                    if($password_new != ''){
+                    $pass = password_hash($password_new, PASSWORD_DEFAULT);
+                    }
+                    else{
+                        $pass = password_hash($password_current, PASSWORD_DEFAULT);
+                    }
+        
+                    $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
+                    $stmt = $pdo->prepare($query2);
+                    $stmt->execute([$username,$email,$pass,$displayname,$descripton,$avatar,$email]);
+        
+                    $query3 = "SELECT * FROM users WHERE email=?";
+                    $stmt = $pdo->prepare($query3);
+                    $stmt->execute([$email]);
+                    $user2 = $stmt->fetch();
+        
+                    $_SESSION['user_id'] = $user2['id']; 
+                    $_SESSION['username'] = $user2['username']; 
+                    $_SESSION['email'] = $user2['email'];
+                    $_SESSION['displayname'] = $user2['displayname'];
+                    $_SESSION['description'] = $user2['description'];
+                    $_SESSION['avatar'] = $user2['avatar'];
+                    echo 'succes!';
+                    header("refresh:2;url=profile.php");
                 }
                 else{
-                    $pass = password_hash($password_current, PASSWORD_DEFAULT);
+                    echo 'No avatar added.';
+
+                    $query3 = "SELECT * FROM users WHERE email=?";
+                    $stmt = $pdo->prepare($query3);
+                    $stmt->execute([$email]);
+                    $user2 = $stmt->fetch();
+
+                    $_SESSION['user_id'] = $user2['id']; 
+                    $_SESSION['username'] = $user2['username']; 
+                    $_SESSION['email'] = $user2['email'];
+                    $_SESSION['displayname'] = $user2['displayname'];
+                    $_SESSION['description'] = $user2['description'];
+                    $_SESSION['avatar'] = $user2['avatar'];
+                    
+                    header("refresh:2;url=profile.php");
                 }
-    
-                $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
-                $stmt = $pdo->prepare($query2);
-                $stmt->execute([$username,$email,$pass,$displayname,$descripton,$avatar,$email]);
-    
-                $query3 = "SELECT * FROM users WHERE email=?";
-                $stmt = $pdo->prepare($query3);
-                $stmt->execute([$email]);
-                $user2 = $stmt->fetch();
-    
-                $_SESSION['user_id'] = $user2['id']; 
-                $_SESSION['username'] = $user2['username']; 
-                $_SESSION['email'] = $user2['email'];
-                $_SESSION['displayname'] = $user2['displayname'];
-                $_SESSION['description'] = $user2['description'];
-                $_SESSION['avatar'] = $user2['avatar'];
-                echo 'succes!';
-                header("refresh:2;url=profile.php");
             }
+
             else{
                 echo 'Current password not corect.';
                 header("refresh:2;url=profile.php");
