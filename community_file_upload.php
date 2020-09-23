@@ -1,7 +1,7 @@
 <?php
 if($_FILES["image"]["name"]!=""){
 
-  $target_dir = "community-uploads-uploads/".$_SESSION['user_id']."/";
+  $target_dir = "community-uploads/".$_SESSION['community_id']."/";
   $target_file = $target_dir . basename($_FILES["image"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
