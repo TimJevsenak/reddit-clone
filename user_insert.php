@@ -25,7 +25,7 @@ if (!empty($username)
     if ($stmt->rowCount() == 1) {
         $user = $stmt->fetch();
     }
-    mkdir("uploads/".$user['id']);
+    mkdir("user-uploads/".$user['id']);
     
     header("Location: login.php");
 }

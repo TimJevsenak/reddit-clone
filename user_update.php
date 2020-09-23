@@ -29,7 +29,7 @@
             }
     
             if (password_verify($password_current, $user['pass'])) {
-                include_once './file_upload.php';
+                include_once './user_file_upload.php';
 
                 if($password_new != ''){
                 $pass = password_hash($password_new, PASSWORD_DEFAULT);
@@ -86,7 +86,6 @@
             }
     
             if (password_verify($password_current, $user['pass'])) {
-                include_once './file_upload.php';
                 
                 if($password_new != ''){
                 $pass = password_hash($password_new, PASSWORD_DEFAULT);

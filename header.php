@@ -13,7 +13,7 @@ include_once './session.php';
     <script src="https://kit.fontawesome.com/9546f008dc.js" crossorigin="anonymous"></script>
     <script src="icons.js" defer></script>
 </head>
-<body class="body">
+<body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #232323;">
   <a class="navbar-brand text-lowercase" href="index.php"><img src="siteIcons/logo.jpg" height="32px" width="32px"> Read-It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@ include_once './session.php';
         echo '
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <img src="uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid rounded" alt="Avatar" width="44" height="44">
+          <img src="user-uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid rounded" alt="Avatar" width="44" height="44">
         </li>';
         }
       }

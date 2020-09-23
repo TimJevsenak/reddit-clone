@@ -9,7 +9,8 @@ include_once './database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Reddit-clone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="icon" href="siteIcons/reddit.png" type="png" sizes="16x16">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="siteIcons/logo.jpg" type="png" sizes="16x16">
     <script src="https://kit.fontawesome.com/9546f008dc.js" crossorigin="anonymous"></script>
     <script src="icons.js" defer></script>
 </head>
@@ -37,9 +38,14 @@ include_once './database.php';
                 <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
                 <label for="image" class="sr-only">Avatar</label>
-                <input name="image" type="file" id="image" class="form-control-file my-1">
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Avatar</span>
+                    </div>
+                    <input name="image" type="file" id="image" class="form-control-file my-1">
+                </div>
                 <div class="text-center">
-                    <img src="uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="No avatar yet" width="64" height="64">
+                    <img src="user-uploads/<?php echo $_SESSION['user_id']."/".$_SESSION['avatar'] ?>" class="img-fluid img-thumbnail" alt="No avatar yet" width="64" height="64">
                 </div>
                 <div class="checkbox my-3 text-center">
                 <label>
@@ -51,7 +57,9 @@ include_once './database.php';
                 </div>
             </form>
         </div>
-        <div class="col-4"></div>
+        <div class="col-4 text-center mt-5">
+            <a href="community_create.php"><button type="button" class="btn btn-outline-success">Create a community</button></a>
+        </div>
     </div>
 </div>
 
