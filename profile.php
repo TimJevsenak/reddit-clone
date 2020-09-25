@@ -28,12 +28,12 @@ include_once './database.php';
                 <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" value="<?php echo $_SESSION['email']; ?>" required="" autofocus="">
                 <label for="inputUsername" class="sr-only">Username</label>
                 <input name="username" type="text" id="inputUsername" class="form-control my-1" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" required="">
+                <label for="inputPassword" class="sr-only">Current password</label>
+                <input name="password_current" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password" required="">
                 <label for="inputPasswordNew" class="sr-only">Password</label>
                 <input name="password_new" type="password" id="inputPasswordNew" class="form-control my-1" placeholder="New password">
                 <label for="inputPasswordNewConfirm" class="sr-only">Confirm password</label>
                 <input name="password_new_confirm" type="password" id="inputPasswordNewConfirm" class="form-control my-1" placeholder="Confirm new password">
-                <label for="inputPassword" class="sr-only">Current password</label>
-                <input name="password_current" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password" required="">
                 <label for="displayName" class="sr-only">Display name</label>
                 <input name="displayName" type="text" id="displayName" class="form-control my-1" placeholder="Display name" value="<?php echo $_SESSION['displayname']; ?>">
                 <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $_SESSION['description']; ?></textarea>
