@@ -25,7 +25,6 @@
             if ($stmt->rowCount() == 1) {
                 $community = $stmt->fetch();
             }
-            $_SESSION['community_id']=$community['id'];
 
             mkdir("community-uploads/".$community['id']);
 

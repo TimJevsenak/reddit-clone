@@ -30,5 +30,5 @@
     } else {
         echo 'You have no communities';
     }
-    echo '</div><div class="col-4"></div></div>';
+    echo '</div><div class="col-4"></div></div></div>';
 ?>
