@@ -24,7 +24,7 @@
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $community = $stmt->fetch();
-            echo '<a href="community.php?id='. $community['id'] .'" class=""><h5 class="mt-5">' . $community['name'] . '</h5></a><p class="text-muted">' . $community['title'] . '</p>';
+            echo '<a href="community_edit.php?id='. $community['id'] .'" class=""><h5 class="mt-5">' . $community['name'] . '</h5></a><p class="text-muted">' . $community['title'] . '</p>';
             $st++;
         }
     } else {
