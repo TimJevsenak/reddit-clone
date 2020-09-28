@@ -56,7 +56,7 @@ include_once './database.php';
             <div>
                 <h5>Communities</h5>
                 <a href="community_create.php"><button type="button" class="btn btn-outline-success">Create</button></a>
-                <a href="community_show.php"><button type="button" class="btn btn-outline-primary">Show</button></a>
+                <a href="community_list.php"><button type="button" class="btn btn-outline-primary">Show</button></a>
             </div>
         </div>
     </div>
