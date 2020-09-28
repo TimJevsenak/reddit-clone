@@ -17,6 +17,7 @@
         </div>
         <div class="col-4 my-5">
         <form class="form-signin" action="community_update.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
             <h1 class="h2 mb-4 font-weight-normal text-center">Update community</h1>
             <input name="name" type="text" class="form-control my-1" placeholder="Name" value="<?php echo $community['name']; ?>" required="" autofocus="">
             <input name="title" type="text" class="form-control my-1" placeholder="Title" value="<?php echo $community['title']; ?>">
@@ -38,3 +39,4 @@
         <div class="col-4"></div>
     </div>
 </div>
+<?php include_once 'footer.php'; ?>

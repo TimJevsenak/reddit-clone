@@ -24,11 +24,13 @@
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $community = $stmt->fetch();
-            echo '<a href="community_edit.php?id='. $community['id'] .'" class=""><h5 class="mt-5">' . $community['name'] . '</h5></a><p class="text-muted">' . $community['title'] . '</p>';
+            echo '<a href="community_edit.php?id='. $community['id'] .'" class=""><h5 class="mt-5">' . $community['name'] . '</h5></a><p class="text-muted mb-5">' . $community['title'] . '</p>';
             $st++;
         }
     } else {
         echo 'You have no communities';
     }
     echo '</div><div class="col-4"></div></div></div>';
+
+    include_once 'footer.php';
 ?>

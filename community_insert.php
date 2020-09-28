@@ -12,7 +12,7 @@
     $stmt->execute([$name]);
     if ($stmt->rowCount() == 0) {
 
-        if($icon!=""){
+        if($icon!=""){ 
             $query2 = "INSERT INTO communities (name,description,title,icon,user_id)"
             . "VALUES (?,?,?,?,?)";
             $stmt = $pdo->prepare($query2);
