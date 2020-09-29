@@ -24,7 +24,7 @@
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $post = $stmt->fetch();
-            echo '<a href="post_edit.php?id='. $post['id'] .'" class=""><h5 class="">' . $post['title'] . '</h5></a><p class="text-muted mt-1">' . $post['post'] . '</p><img src="post-uploads/' . $post['id'] . "/" . $post['image'] . '" class="img-fluid mb-5" width="128" height="128">';
+            echo '<a href="post_edit.php?id='. $post['id'] .'" class=""><h5 class="">' . $post['title'] . '</h5></a><p class="text-muted mt-1" style="overflow: hidden; height: 3rem;">' . $post['post'] . '</p><img src="post-uploads/' . $post['id'] . "/" . $post['image'] . '" class="img-fluid mb-5" width="128" height="128">';
             $st++;
         }
     } else {

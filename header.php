@@ -53,7 +53,7 @@ include_once './session.php';
         echo '
         <ul class="navbar-nav">
         <li class="nav-item">
-          <img src="user-uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid rounded" alt="Avatar" width="44" height="44">
+          <img src="user-uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid" alt="Avatar" width="44" height="44" style="border-radius: 50%;">
         </li>';
         }
       }
