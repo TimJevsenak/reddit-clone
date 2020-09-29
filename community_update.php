@@ -38,15 +38,18 @@
             header('refresh:5;url=community_edit.php?id=' . $id);
             }
             else{
-                $query2 = "UPDATE communities SET name=?, description=?, title=? WHERE id=?";
+                $query2 = "UPDATE communities SET description=?, title=? WHERE id=?";
                 $stmt = $pdo->prepare($query2);
-                $stmt->execute([$name, $description, $title, $id]);
+                $stmt->execute([$description, $title, $id]);
         
                 header('refresh:5;url=community_edit.php?id=' . $id);
             }
         }
         else{
             echo 'No file was uploaded.';
+            $query2 = "UPDATE communities SET description=?, title=? WHERE id=?";
+            $stmt = $pdo->prepare($query2);
+            $stmt->execute([$description, $title, $id]);
             header('refresh:5;url=community_edit.php?id=' . $id);
         }
     }
@@ -72,6 +75,10 @@
         }
         else{
             echo 'No file was uploaded.';
+            $query2 = "UPDATE communities SET name=?, description=?, title=? WHERE id=?";
+            $stmt = $pdo->prepare($query2);
+            $stmt->execute([$name, $description, $title, $id]);
+        
             header('refresh:5;url=community_edit.php?id=' . $id);
         }
         

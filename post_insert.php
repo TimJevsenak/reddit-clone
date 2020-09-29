@@ -43,7 +43,6 @@
         if ($stmt->rowCount() == 1) {
             $post = $stmt->fetch();
         }
-        $_SESSION['post_id']=$post['id'];
 
         mkdir("post-uploads/".$post['id']);
 
