@@ -20,7 +20,7 @@
     $stmt = $pdo->prepare($query);
     $stmt->execute([$_SESSION['user_id']]);
     echo '<h4 class="mt-5 text-center">Your Communities</h4>';
-    echo '<div class="container mt-5"><div class="row"><div class="col-4"><a href="profile.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></div><div class="col-4 text-center">';
+    echo '<div class="container mt-4"><div class="row"><div class="col-4"><a href="profile.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></div><div class="col-4 text-center">';
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $community = $stmt->fetch();
