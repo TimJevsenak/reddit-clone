@@ -54,7 +54,7 @@ CREATE TABLE `posts`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
   `title` Varchar(50) NOT NULL,
-  `post` Varchar(255) NOT NULL,
+  `post` Text NOT NULL,
   `date` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `community_id` Int,
   `image` Char(255),
