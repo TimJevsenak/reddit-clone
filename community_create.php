@@ -25,8 +25,8 @@ include_once './database.php';
             <form class="form-signin" action="community_insert.php" method="post" enctype="multipart/form-data">
                 <h1 class="h2 mb-4 font-weight-normal text-center">Create a community</h1>
                 <input name="name" type="text" class="form-control my-1" placeholder="Name" required="" autofocus="">
-                <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description" required=""></textarea>
                 <input name="title" type="text" class="form-control my-1" placeholder="Title (eg. The Best Community In The World)" required="">
+                <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description" required=""></textarea>
                 <div class="input-group my-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Community icon</span>
