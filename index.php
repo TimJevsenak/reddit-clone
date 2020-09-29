@@ -3,6 +3,35 @@ include_once 'header.php';
 include_once 'database.php';
 include_once 'session.php';
 
+function time_elapsed_string($datetime, $full = false) {
+  $now = new DateTime;
+  $ago = new DateTime($datetime);
+  $diff = $now->diff($ago);
+
+  $diff->w = floor($diff->d / 7);
+  $diff->d -= $diff->w * 7;
+
+  $string = array(
+      'y' => 'year',
+      'm' => 'month',
+      'w' => 'week',
+      'd' => 'day',
+      'h' => 'hour',
+      'i' => 'minute',
+      's' => 'second',
+  );
+  foreach ($string as $k => &$v) {
+      if ($diff->$k) {
+          $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+      } else {
+          unset($string[$k]);
+      }
+  }
+
+  if (!$full) $string = array_slice($string, 0, 1);
+  return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
 $st = 0;
 
 if(isset($_SESSION['user_id'])){
@@ -37,6 +66,7 @@ $stmt->execute([$_SESSION['user_id']]);
           if($stmt->rowCount() > 0) {
             while($st < $stmt->rowCount()) {
                 $post = $stmt->fetch();
+                $date = time_elapsed_string($post['date']);
                 echo '<div class="col-2"></div>
               <div class="col-lg-8">
                 <div class="card mb-4 shadow-sm">
@@ -49,7 +79,7 @@ $stmt->execute([$_SESSION['user_id']]);
                         <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
                         <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
                       </div>
-                      <small class="text-muted">9 mins</small>
+                      <small class="text-muted">' . $date . '</small>
                     </div>
                   </div>
                 </div>
@@ -69,6 +99,7 @@ $stmt->execute([$_SESSION['user_id']]);
             if($stmt->rowCount() > 0) {
               while($st < $stmt->rowCount()) {
                 $post = $stmt->fetch();
+                $date = time_elapsed_string($post['date']);
                 echo '<div class="col-2"></div>
               <div class="col-lg-8">
                 <div class="card mb-4 shadow-sm">
@@ -81,7 +112,7 @@ $stmt->execute([$_SESSION['user_id']]);
                         <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
                         <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
                       </div>
-                      <small class="text-muted">9 mins</small>
+                      <small class="text-muted">' . $date . '</small>
                     </div>
                   </div>
                 </div>
@@ -101,6 +132,7 @@ $stmt->execute([$_SESSION['user_id']]);
           if($stmt->rowCount() > 0) {
             while($st < $stmt->rowCount()) {
               $post = $stmt->fetch();
+              $date = time_elapsed_string($post['date']);
               echo '<div class="col-2"></div>
             <div class="col-lg-8">
               <div class="card mb-4 shadow-sm">
@@ -113,7 +145,7 @@ $stmt->execute([$_SESSION['user_id']]);
                       <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
                       <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">' . $date . '</small>
                   </div>
                 </div>
               </div>
