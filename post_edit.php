@@ -17,34 +17,33 @@
 
     $id = $_GET['id'];
 
-    $query = "SELECT * FROM communities WHERE id=?";
+    $query = "SELECT * FROM posts WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
-    $community = $stmt->fetch();
+    $post = $stmt->fetch();
 ?>
 <div class="conatainer">
     <div class="row">
         <div class="col-4 mt-5">
-            <a href="community_list.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
+            <a href="post_list.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         </div>
         <div class="col-4 my-5">
         <form class="form-signin" action="community_update.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <h1 class="h2 mb-4 font-weight-normal text-center">Update community</h1>
-            <input name="name" type="text" class="form-control my-1" placeholder="Name" value="<?php echo $community['name']; ?>" required="" autofocus="">
-            <input name="title" type="text" class="form-control my-1" placeholder="Title" value="<?php echo $community['title']; ?>">
-            <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $community['description']; ?></textarea>
+            <h1 class="h2 mb-4 font-weight-normal text-center">Change your post</h1>
+            <input name="title" type="text" class="form-control my-1" placeholder="Name" value="<?php echo $post['title']; ?>" required="" autofocus="">
+            <textarea name="description" class="form-control" id="Textarea" rows="3" placeholder="Description"><?php echo $post['post']; ?></textarea>
             <div class="input-group mt-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Icon</span>
                 </div>
                 <input name="image" type="file" id="image" class="form-control-file my-1">
             </div>
-            <div class="text-left">
-                <img src="community-uploads/<?php echo $id . "/" . $community['icon']; ?>" class="img-fluid img-thumbnail" alt="No icon yet" width="64" height="64">
+            <div class="text-center">
+                <img src="post-uploads/<?php echo $id . "/" . $post['image']; ?>" class="img-fluid img-thumbnail" alt="No icon yet" width="192" height="128">
             </div>
             <div class="text-center mt-3">
-                <button class="btn btn-success" type="submit" name="submit">Update</button>
+                <button class="btn btn-success" type="submit" name="submit">Save changes</button>
             </div>
         </form>
         </div>

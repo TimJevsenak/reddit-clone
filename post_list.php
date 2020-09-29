@@ -20,7 +20,7 @@
     $stmt = $pdo->prepare($query);
     $stmt->execute([$_SESSION['user_id']]);
     echo '<h4 class="mt-5 text-center">Your Posts</h4>';
-    echo '<div class="container mt-4"><div class="row"><div class="col-4"><a href="profile.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></div><div class="col-4 text-center">';
+    echo '<div class="container mt-4"><div class="row"><div class="col-2"><a href="profile.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></div><div class="col-8 text-center">';
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $post = $stmt->fetch();
@@ -30,7 +30,7 @@
     } else {
         echo 'You have no posts.';
     }
-    echo '</div><div class="col-4"></div></div></div>';
+    echo '</div><div class="col-2"></div></div></div>';
 
     include_once 'footer.php';
 ?>

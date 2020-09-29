@@ -42,7 +42,7 @@ include_once './session.php';
         echo '
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="logout.php"><button class="btn btn-sm btn-info my-2 my-sm-0">Log Out</button></a>
+            <a class="nav-link pb-sm-0" href="logout.php"><button class="btn btn-sm btn-info my-2 my-sm-0">Log Out</button></a>
           </li>';
         echo '<li class="nav-item">
               <a class="nav-link" href="profile.php"><button class="btn btn-sm btn-outline-light my-2 my-sm-0">';
@@ -51,7 +51,7 @@ include_once './session.php';
         if($_SESSION['avatar']!="")
         {
         echo '
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
         <li class="nav-item">
           <img src="user-uploads/' . $_SESSION['user_id'] . "/" . $_SESSION['avatar'] . '" class="img-fluid rounded" alt="Avatar" width="44" height="44">
         </li>';
