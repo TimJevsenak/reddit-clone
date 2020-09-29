@@ -4,11 +4,11 @@
     include_once 'session.php';
 
     $st = 0;
-    $query = "SELECT * FROM communities ORDER BY RAND()";
+    $query = "SELECT * FROM communities ORDER BY RAND() LIMIT 5";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
-    echo '<div class="container mt-5"><div class="row"><div class="col-3"></div><div class="col-6">';
+    echo '<div class="container mt-5"><div class="row"><div class="col-3"> <a href="index.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></div><div class="col-6">';
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $community = $stmt->fetch();

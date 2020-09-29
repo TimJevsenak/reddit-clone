@@ -17,9 +17,10 @@
     if($stmt->rowCount() > 0) {
         while($st < $stmt->rowCount()) {
             $community = $stmt->fetch();
-            if($name == $community['name'])
+            if($name == $community['name']){
                 $taken = 1;
-                $st++;
+            }
+            $st++;
         }
     }
 
@@ -32,7 +33,7 @@
             if($uploadOk!=0){
             $query2 = "UPDATE communities SET description=?, title=?, icon=? WHERE id=?";
             $stmt = $pdo->prepare($query2);
-            $stmt->execute([$description, $title, $icon,  $id]);
+            $stmt->execute([$description, $title, $icon, $id]);
 
             header('refresh:5;url=community_edit.php?id=' . $id);
             }
