@@ -106,7 +106,7 @@ $stmt->execute([$_SESSION['user_id']]);
 
             $query = "SELECT DISTINCT p.id, p.title, p.post, p.image, p.date, p.community_id, c.name, c.icon, u.username
             FROM posts p INNER JOIN communities c ON p.community_id=c.id INNER JOIN subscriptions s ON s.community_id=c.id INNER JOIN users u ON p.user_id=u.id
-            ORDER BY p.date";
+            ORDER BY RAND()";
             $stmt = $pdo->prepare($query);
             $stmt->execute([]);
             if($stmt->rowCount() > 0) {
@@ -152,7 +152,7 @@ $stmt->execute([$_SESSION['user_id']]);
         else {
           $query = "SELECT DISTINCT p.id, p.title, p.post, p.image, p.date, p.community_id, c.name, c.icon, u.username
           FROM posts p INNER JOIN communities c ON p.community_id=c.id INNER JOIN subscriptions s ON s.community_id=c.id INNER JOIN users u ON p.user_id=u.id
-          ORDER BY p.date";
+          ORDER BY RAND()";
           $stmt = $pdo->prepare($query);
           $stmt->execute([]);
           if($stmt->rowCount() > 0) {
