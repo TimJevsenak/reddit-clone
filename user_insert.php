@@ -1,5 +1,6 @@
 <?php
 include_once './database.php';
+include_once 'session.php';
 
 $username = $_POST['username'];
 $email = $_POST['email'];
@@ -26,8 +27,15 @@ if (!empty($username)
         $user = $stmt->fetch();
     }
     mkdir("user-uploads/".$user['id']);
+
+    $_SESSION['user_id'] = $user['id']; 
+    $_SESSION['username'] = $user['username']; 
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['displayname'] = $user['displayname'];
+    $_SESSION['description'] = $user['description'];
+    $_SESSION['avatar'] = $user['avatar'];
     
-    header("Location: login.php");
+    header("Location: index.php");
 }
 else {
     header("Location: registration.php");

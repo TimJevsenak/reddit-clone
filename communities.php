@@ -4,7 +4,7 @@
     include_once 'session.php';
 
     $st = 0;
-    $query = "SELECT * FROM communities";
+    $query = "SELECT * FROM communities ORDER BY RAND()";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
@@ -18,7 +18,7 @@
             $st++;
         }
     } else {
-        echo 'You have no communities';
+        echo 'No communities to display.';
     }
     echo '</div><div class="col-3"></div></div></div>';
 
