@@ -51,7 +51,7 @@ $stmt->execute([$_SESSION['user_id']]);
       <h1>Home</h1>
       <p class="lead text-muted">Read-it is a reddit clone I'm making for a school project. <br>It's goal is to have the basic functions of reddit.</p>
       <p>
-        <a href="communities.php" class="btn btn-primary my-2">Explore Communities</a>
+        <a href="communities.php" class="btn btn-light my-2">Explore Communities</a>
       </p>
     </div>
 
@@ -83,12 +83,12 @@ $stmt->execute([$_SESSION['user_id']]);
                         By <span class="text-muted"> u/</span>' . $post['username'] . '
                         </div>
                       </div>
-                    </div>';
+                    </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
                     if($post['image']!=""){
                     echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
                     }
                    echo '<div class="card-body">
-                      <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p>
+                      <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
@@ -131,12 +131,12 @@ $stmt->execute([$_SESSION['user_id']]);
                     By <span class="text-muted"> u/</span>' . $post['username'] . '
                     </div>
                   </div>
-                </div>';
+                </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
                 if($post['image']!=""){
                 echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
                 }
                echo '<div class="card-body">
-                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p>
+                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
@@ -179,12 +179,12 @@ $stmt->execute([$_SESSION['user_id']]);
                     By <span class="text-muted"> u/</span>' . $post['username'] . '
                     </div>
                   </div>
-                </div>';
+                </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
                 if($post['image']!=""){
                 echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
                 }
                echo '<div class="card-body">
-                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p>
+                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 

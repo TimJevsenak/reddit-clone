@@ -78,8 +78,7 @@
         <div class="col-2">
             <?php 
                 if(isset($_SESSION['user_id'])){
-                    echo '<a href="communities.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
-                    <a href="index.php" style="color: black;"><i class="fas fa-home-lg-alt"></i></a>';
+                    echo '<a href="communities.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>';
                 }
             ?>
         </div>
@@ -110,12 +109,12 @@
                                 By <span class="text-muted"> u/</span>' . $post['username'] . '
                                 </div>
                             </div>
-                            </div>';
+                            </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
                             if($post['image']!=""){
                             echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
                             }
                             echo '<div class="card-body">
-                            <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p>
+                            <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
