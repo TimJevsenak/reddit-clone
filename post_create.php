@@ -43,7 +43,7 @@ include_once './database.php';
 
                         while($st < $stmt->rowCount()) {
                             $community = $stmt->fetch();
-                            echo '<option value="' . $community['id'] . '">' . $community['name'] . "</option>";
+                            echo '<option value="' . $community['id'] . '"><span class="text-muted">r</span>/' . $community['name'] . "</option>";
                             $st++;
                         }
                         ?>

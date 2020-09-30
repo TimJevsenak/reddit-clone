@@ -31,7 +31,7 @@ include_once './database.php';
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Community icon</span>
                     </div>
-                    <input name="image" type="file" id="image" class="form-control-file my-1">
+                    <input name="image" type="file" id="image" class="form-control-file my-1" required="">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success" type="submit" name="submit">Create</button>
