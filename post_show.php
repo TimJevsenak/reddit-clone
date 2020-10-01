@@ -103,7 +103,13 @@
                                 $comment = $stmt->fetch();
                                 $date = time_elapsed_string($comment['date']);
 
-                                echo '<div class="my-4"><p class="m-0">' . $comment['text'] . '</p><small class="text-muted">Commented ' . $date . '</small>';
+                                $query2 = "SELECT * FROM users WHERE id=?";
+                                $stmt2 = $pdo->prepare($query2);
+                                $stmt2->execute([$comment['user_id']]);
+                                $user = $stmt2->fetch();
+
+                                echo '<div class="my-4 text-left"><small>By <img src="user-uploads/' . $user['id'] . '/' . $user['avatar'] .'" class="img-fluid ml-2" width="16" height="16" style="border-radius: 50%;"><span class="text-muted"> u/</span>' . $user['username'] . '</small>
+                                <p class="m-0 text-justify">' . $comment['text'] . '</p><small class="text-muted">Commented ' . $date . '</small>';
                                 $st++;
                             }
                         }
