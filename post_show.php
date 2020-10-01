@@ -4,11 +4,42 @@
     include_once 'database.php';
 
     $id = $_GET['id'];
+
+    function time_elapsed_string($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+      
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+      
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+      
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+      }
     
     $query = "SELECT * FROM posts WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
     $post = $stmt->fetch();
+
+    $date = time_elapsed_string($post['date']);
 ?>
 
     <div class="row mt-5">
@@ -21,6 +52,7 @@
                 }
             ?>
             <p class="text-justify mt-4"><?php echo $post['post'] ?></p>
+            <p class="text-right text-muted mt-4">Posted <?php echo $date ?></p>
         </div>
         <div class="col-2"></div>
         <div class="container text-center">
@@ -58,7 +90,13 @@
                         </div>
                     </div>
                 </div>
-        </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-lg-8">
+
+                </div>
+                <div class="col-2"></div>
+            </div>
         </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
