@@ -4,6 +4,7 @@
     include_once 'database.php';
 
     $id = $_GET['id'];
+    $st = 0;
 
     function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
@@ -93,7 +94,21 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-lg-8">
+                    <?php 
+                        $query = "SELECT * FROM comments WHERE post_id=?";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute([$id]);
+                        if($stmt->rowCount() > 0) {
+                            while($st < $stmt->rowCount()) {
+                                $comment = $stmt->fetch();
+                                $date = time_elapsed_string($comment['date']);
 
+                                echo '<div class="my-4"><p class="m-0">' . $comment['text'] . '</p><small class="text-muted">Posted ' . $date . '</small>';
+                                $st++;
+                            }
+                        }                      
+                        
+                    ?>
                 </div>
                 <div class="col-2"></div>
             </div>
