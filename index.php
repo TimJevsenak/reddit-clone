@@ -90,9 +90,9 @@ $stmt->execute([$_SESSION['user_id']]);
                    echo '<div class="card-body">
                       <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                       <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
-                          <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
+                        <div class="btn-group align-middle">
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
@@ -116,38 +116,38 @@ $stmt->execute([$_SESSION['user_id']]);
                 $post = $stmt->fetch();
                 $date = time_elapsed_string($post['date']);
                 echo '<div class="col-2"></div>
-            <div class="col-lg-8">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-title my-2">
-                  <div class="row">
-                    <div class="col-md-3 text-md-left px-4">
-                    <a href="community_show.php?id=' . $post['community_id'] . '"><img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
-                      <span class="text-muted">r/</span>' . $post['name'] . '</a>
+                <div class="col-lg-8">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="card-title my-2">
+                      <div class="row">
+                        <div class="col-md-3 text-md-left px-4">
+                        <a href="community_show.php?id=' . $post['community_id'] . '"><img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
+                          <span class="text-muted">r/</span>' . $post['name'] . '</a>
+                        </div>
+                        <div class="col-md-6 text-md-center">
+                          <h4 class="px-4">' . $post['title'] . '</h4>
+                        </div>
+                        <div class="col-md-3 text-md-right px-4">
+                        By <span class="text-muted"> u/</span>' . $post['username'] . '
+                        </div>
+                      </div>
+                    </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
+                    if($post['image']!=""){
+                    echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
+                    }
+                   echo '<div class="card-body">
+                      <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group align-middle">
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
+                        </div>
+                        <small class="text-muted">' . $date . '</small>
+                      </div>
                     </div>
-                    <div class="col-md-6 text-md-center">
-                      <h4 class="px-4">' . $post['title'] . '</h4>
-                    </div>
-                    <div class="col-md-3 text-md-right px-4">
-                    By <span class="text-muted"> u/</span>' . $post['username'] . '
-                    </div>
-                  </div>
-                </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
-                if($post['image']!=""){
-                echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
-                }
-               echo '<div class="card-body">
-                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
-                      <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
-                    </div>
-                    <small class="text-muted">' . $date . '</small>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-2"></div>';
+                <div class="col-2"></div>';
                 $st++;
               }
             }
@@ -164,38 +164,38 @@ $stmt->execute([$_SESSION['user_id']]);
               $post = $stmt->fetch();
               $date = time_elapsed_string($post['date']);
               echo '<div class="col-2"></div>
-            <div class="col-lg-8">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-title my-2">
-                  <div class="row">
-                    <div class="col-md-3 text-md-left px-4">
-                    <a href="community_show.php?id=' . $post['community_id'] . '"><img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
-                      <span class="text-muted">r/</span>' . $post['name'] . '</a>
+                <div class="col-lg-8">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="card-title my-2">
+                      <div class="row">
+                        <div class="col-md-3 text-md-left px-4">
+                        <a href="community_show.php?id=' . $post['community_id'] . '"><img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
+                          <span class="text-muted">r/</span>' . $post['name'] . '</a>
+                        </div>
+                        <div class="col-md-6 text-md-center">
+                          <h4 class="px-4">' . $post['title'] . '</h4>
+                        </div>
+                        <div class="col-md-3 text-md-right px-4">
+                        By <span class="text-muted"> u/</span>' . $post['username'] . '
+                        </div>
+                      </div>
+                    </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
+                    if($post['image']!=""){
+                    echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
+                    }
+                   echo '<div class="card-body">
+                      <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group align-middle">
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
+                        </div>
+                        <small class="text-muted">' . $date . '</small>
+                      </div>
                     </div>
-                    <div class="col-md-6 text-md-center">
-                      <h4 class="px-4">' . $post['title'] . '</h4>
-                    </div>
-                    <div class="col-md-3 text-md-right px-4">
-                    By <span class="text-muted"> u/</span>' . $post['username'] . '
-                    </div>
-                  </div>
-                </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
-                if($post['image']!=""){
-                echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
-                }
-               echo '<div class="card-body">
-                  <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
-                      <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
-                    </div>
-                    <small class="text-muted">' . $date . '</small>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-2"></div>';
+                <div class="col-2"></div>';
               $st++;
             }
           }
