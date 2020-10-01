@@ -103,9 +103,12 @@
                                 $comment = $stmt->fetch();
                                 $date = time_elapsed_string($comment['date']);
 
-                                echo '<div class="my-4"><p class="m-0">' . $comment['text'] . '</p><small class="text-muted">Posted ' . $date . '</small>';
+                                echo '<div class="my-4"><p class="m-0">' . $comment['text'] . '</p><small class="text-muted">Commented ' . $date . '</small>';
                                 $st++;
                             }
+                        }
+                        else{
+                            echo '<p class="text-muted mb-5" style="font-size: 12px;">No comments yet!<br>Be the first one to comment.</p>';
                         }                      
                         
                     ?>
