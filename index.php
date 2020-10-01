@@ -90,7 +90,7 @@ $stmt->execute([$_SESSION['user_id']]);
                   $color="text-danger";
                 }
 
-                echo '<div class="col-2"></div>
+                echo '<div id="' . $post['id'] . '" class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
                     <div class="card-title my-2">
@@ -157,7 +157,7 @@ $stmt->execute([$_SESSION['user_id']]);
                   $color="text-danger";
                 }
 
-                echo '<div class="col-2"></div>
+                echo '<div id="' . $post['id'] . '" class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
                     <div class="card-title my-2">
@@ -224,7 +224,7 @@ $stmt->execute([$_SESSION['user_id']]);
                   $color="text-danger";
                 }
 
-                echo '<div class="col-2"></div>
+                echo '<div id="' . $post['id'] . '"  class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
                     <div class="card-title my-2">

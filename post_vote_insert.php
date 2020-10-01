@@ -27,6 +27,6 @@
         $stmt = $pdo->prepare($query2);
         $stmt->execute([$id, $_SESSION['user_id'], $upvote]);
 
-        header('location: index.php');
+        header('location: index.php#'.$id);
     }
 ?>
