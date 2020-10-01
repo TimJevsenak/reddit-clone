@@ -20,7 +20,7 @@
                 echo '<img src="post-uploads/' . $id . '/' . $post['image'] . '" class="img-fluid" width="80%" height="80%">';
                 }
             ?>
-            <p><?php echo $post['post'] ?></p>
+            <p class="text-justify mt-4"><?php echo $post['post'] ?></p>
         </div>
         <div class="col-2"></div>
     </div>
