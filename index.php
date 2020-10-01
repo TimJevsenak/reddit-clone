@@ -33,6 +33,10 @@ function time_elapsed_string($datetime, $full = false) {
 }
 
 $st = 0;
+$upvotes=0;
+$downvotes=0;
+$votes=0;
+$color="";
 
 if(isset($_SESSION['user_id'])){
 $query = "SELECT DISTINCT p.id, p.title, p.post, p.image, p.date, p.community_id, c.name, c.icon, u.username
@@ -67,6 +71,25 @@ $stmt->execute([$_SESSION['user_id']]);
             while($st < $stmt->rowCount()) {
                 $post = $stmt->fetch();
                 $date = time_elapsed_string($post['date']);
+
+                $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],1]);
+                $upvotes = $stmt2->rowCount();
+
+                $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],0]);
+                $downvotes = $stmt2->rowCount();
+
+                $votes = $upvotes - $downvotes;
+                if($votes <= 0){
+                  $color="text-primary";
+                }
+                else{
+                  $color="text-danger";
+                }
+
                 echo '<div class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
@@ -91,8 +114,8 @@ $stmt->execute([$_SESSION['user_id']]);
                       <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group align-middle">
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
@@ -115,6 +138,25 @@ $stmt->execute([$_SESSION['user_id']]);
               while($st < $stmt->rowCount()) {
                 $post = $stmt->fetch();
                 $date = time_elapsed_string($post['date']);
+
+                $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],1]);
+                $upvotes = $stmt2->rowCount();
+
+                $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],0]);
+                $downvotes = $stmt2->rowCount();
+
+                $votes = $upvotes - $downvotes;
+                if($votes <= 0){
+                  $color="text-primary";
+                }
+                else{
+                  $color="text-danger";
+                }
+
                 echo '<div class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
@@ -139,8 +181,8 @@ $stmt->execute([$_SESSION['user_id']]);
                       <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group align-middle">
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
+                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
@@ -163,7 +205,26 @@ $stmt->execute([$_SESSION['user_id']]);
             while($st < $stmt->rowCount()) {
               $post = $stmt->fetch();
               $date = time_elapsed_string($post['date']);
-              echo '<div class="col-2"></div>
+
+              $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],1]);
+                $upvotes = $stmt2->rowCount();
+
+                $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                $stmt2 = $pdo->prepare($query2);
+                $stmt2->execute([$post['id'],0]);
+                $downvotes = $stmt2->rowCount();
+
+                $votes = $upvotes - $downvotes;
+                if($votes <= 0){
+                  $color="text-primary";
+                }
+                else{
+                  $color="text-danger";
+                }
+
+                echo '<div class="col-2"></div>
                 <div class="col-lg-8">
                   <div class="card mb-4 shadow-sm">
                     <div class="card-title my-2">
@@ -187,8 +248,8 @@ $stmt->execute([$_SESSION['user_id']]);
                       <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group align-middle">
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mr-2">0</span>
-                          <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-dark" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a><span class="font-weight-bold mr-2">0</span>
+                          <i class="far fa-arrow-square-up fa-2x mx-1 text-danger"></i> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
+                          <i class="far fa-arrow-square-down mx-1 fa-2x text-primary"></i>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
