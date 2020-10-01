@@ -36,7 +36,7 @@ CREATE INDEX `IX_Relationship5` ON `communities` (`user_id`)
 CREATE TABLE `comments`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
-  `text` Varchar(255) NOT NULL,
+  `text` Text NOT NULL,
   `date` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `post_id` Int,
   `user_id` Int,
