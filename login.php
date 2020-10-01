@@ -11,12 +11,7 @@ include_once 'header.php';
                 <input name="email" type="email" id="inputEmail" class="form-control my-1" placeholder="Email address" required="" autofocus="">
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input name="password" type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
-                <div class="checkbox my-3 text-center">
-                <label>
-                <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                </div>
-                <div class="text-center">
+                <div class="text-center mt-5">
                     <button class="btn btn-primary" type="submit">Sign in</button>
                 </div>
             </form>

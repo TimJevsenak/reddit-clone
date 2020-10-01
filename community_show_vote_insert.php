@@ -3,6 +3,7 @@
     include_once 'session.php';
 
     $id=$_GET['id'];
+    $cid=$_GET['cid'];
     $upvote=$_GET['upvote'];
 
     if(isset($_SESSION['user_id'])){
@@ -29,10 +30,10 @@
             $stmt = $pdo->prepare($query2);
             $stmt->execute([$id, $_SESSION['user_id'], $upvote]);
 
-            header('location: index.php#'.$id);
+            header('location: community_show.php?id='.$cid.'#'.$id);
         }
     }
     else{
-        header('location: index.php#'.$id);
+        header('location: community_show.php?id='.$cid.'#'.$id);
     }
 ?>

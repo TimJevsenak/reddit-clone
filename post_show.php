@@ -5,6 +5,10 @@
 
     $id = $_GET['id'];
     $st = 0;
+    $upvotes=0;
+    $downvotes=0;
+    $votes=0;
+    $color="";
 
     function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
@@ -34,6 +38,23 @@
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
       }
+        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$id,1]);
+        $upvotes = $stmt2->rowCount();
+
+        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$id,0]);
+        $downvotes = $stmt2->rowCount();
+
+        $votes = $upvotes - $downvotes;
+        if($votes <= 0){
+        $color="text-primary";
+        }
+        else{
+        $color="text-danger";
+        }
     
     $query = "SELECT * FROM posts WHERE id=?";
     $stmt = $pdo->prepare($query);
@@ -53,6 +74,8 @@
                 }
             ?>
             <p class="text-justify mt-4"><?php echo $post['post'] ?></p>
+            <a href="post_show_vote_insert.php?id=<?php echo $post['id'] ?>&upvote=1" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 <?php echo $color ?>"><?php echo $votes ?></span>
+            <a href="post_show_vote_insert.php?id=<?php echo $post['id'] ?>&upvote=0" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
             <p class="text-right text-muted mt-4">Posted <?php echo $date ?></p>
         </div>
         <div class="col-2"></div>

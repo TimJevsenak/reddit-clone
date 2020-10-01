@@ -16,12 +16,7 @@ include_once 'header.php';
                 <input name="password" type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
                 <label for="inputPasswordConfirm" class="sr-only">Confirm password</label>
                 <input name="password_confirm" type="password" id="inputPasswordConfirm" class="form-control my-1" placeholder="Confirm password" required="">
-                <div class="checkbox my-3 text-center">
-                <label>
-                <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                </div>
-                <div class="text-center">
+                <div class="text-center mt-5">
                     <button class="btn btn-success" type="submit">Sign Up</button>
                 </div>
             </form>

@@ -6,6 +6,10 @@
     $id = $_GET['id'];
     $subs = 0;
     $subed = 0;
+    $upvotes=0;
+    $downvotes=0;
+    $votes=0;
+    $color="";
     
     $query = "SELECT * FROM communities WHERE id=?";
     $stmt = $pdo->prepare($query);
@@ -93,8 +97,27 @@
                     while($st < $stmt->rowCount()) {
                         $post = $stmt->fetch();
                         $date = time_elapsed_string($post['date']);
+
+                        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                        $stmt2 = $pdo->prepare($query2);
+                        $stmt2->execute([$post['id'],1]);
+                        $upvotes = $stmt2->rowCount();
+
+                        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
+                        $stmt2 = $pdo->prepare($query2);
+                        $stmt2->execute([$post['id'],0]);
+                        $downvotes = $stmt2->rowCount();
+
+                        $votes = $upvotes - $downvotes;
+                        if($votes <= 0){
+                        $color="text-primary";
+                        }
+                        else{
+                        $color="text-danger";
+                        }
+
                         echo '
-                        <div class="mt-5">
+                        <div id="' . $post['id'] . '" class="mt-5">
                         <div class="card mb-4 shadow-sm">
                             <div class="card-title my-2">
                             <div class="row">
@@ -117,8 +140,8 @@
                             <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                <i class="far fa-arrow-square-up fa-2x mx-1"></i><span class="font-weight-bold">0</span> 
-                                <i class="far fa-arrow-square-down mx-1 fa-2x"></i><span class="font-weight-bold">0</span>
+                                <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=1&cid=' . $post['community_id'] . '" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
+                                <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=0&cid=' . $post['community_id'] . '" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
                                 </div>
                                 <small class="text-muted">' . $date . '</small>
                             </div>

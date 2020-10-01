@@ -29,10 +29,10 @@
             $stmt = $pdo->prepare($query2);
             $stmt->execute([$id, $_SESSION['user_id'], $upvote]);
 
-            header('location: index.php#'.$id);
+            header('location: post_show.php?id='.$id);
         }
     }
     else{
-        header('location: index.php#'.$id);
+        header('location: post_show.php?id='.$id);
     }
 ?>
