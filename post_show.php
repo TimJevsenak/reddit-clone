@@ -131,8 +131,29 @@
                                 $stmt2->execute([$comment['user_id']]);
                                 $user = $stmt2->fetch();
 
-                                echo '<div class="my-4 text-left"><small>By <img src="user-uploads/' . $user['id'] . '/' . $user['avatar'] .'" class="img-fluid ml-2" width="16" height="16" style="border-radius: 50%;"><span class="text-muted"> u/</span>' . $user['username'] . '</small>
-                                <p class="m-0 text-justify">' . $comment['text'] . '</p><small class="text-muted">Commented ' . $date . '</small>';
+                                $query3 = "SELECT * FROM comment_votes WHERE comment_id=? AND upvote=?";
+                                $stmt3 = $pdo->prepare($query3);
+                                $stmt3->execute([$comment['id'],1]);
+                                $upvotes = $stmt3->rowCount();
+
+                                $query3 = "SELECT * FROM comment_votes WHERE comment_id=? AND upvote=?";
+                                $stmt3 = $pdo->prepare($query3);
+                                $stmt3->execute([$comment['id'],0]);
+                                $downvotes = $stmt3->rowCount();
+
+                                $votes = $upvotes - $downvotes;
+                                if($votes <= 0){
+                                $color="text-primary";
+                                }
+                                else{
+                                $color="text-danger";
+                                }
+
+                                echo '<div id="' . $comment['id'] . '" class="my-4 text-left"><small>By <img src="user-uploads/' . $user['id'] . '/' . $user['avatar'] .'" class="img-fluid ml-2" width="16" height="16" style="border-radius: 50%;"><span class="text-muted"> u/</span>' . $user['username'] . '</small>
+                                <p class="m-0 text-justify">' . $comment['text'] . '</p>
+                                <a href="comment_vote_insert.php?id=' . $comment['id'] . '&upvote=1&pid=' . $id . '" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-1x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
+                                <a href="comment_vote_insert.php?id=' . $comment['id'] . '&upvote=0&pid=' . $id . '" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-1x"></i></a>
+                                <small class="text-muted ml-5">Commented ' . $date . '</small>';
                                 $st++;
                             }
                         }
