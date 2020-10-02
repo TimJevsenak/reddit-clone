@@ -5,7 +5,7 @@ include_once 'header.php';
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
-        <div class="col-4 my-5">
+        <div class="col-4 my-5 text-center">
             <form class="form-signin" action="user_insert.php" method="post">
                 <h1 class="h2 my-4 font-weight-normal text-center">Sign Up</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
@@ -20,6 +20,9 @@ include_once 'header.php';
                     <button class="btn btn-success" type="submit">Sign Up</button>
                 </div>
             </form>
+            <div class="mt-5">
+            <a class="mt-5" href="login.php">Already have an account?</a><br>
+            </div>
         </div>
         <div class="col-4"></div>
     </div>
