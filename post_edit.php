@@ -20,6 +20,9 @@
     $query = "SELECT * FROM posts WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
+    if($stmt->rowCount()!=1){
+        header('location: index.php');
+    }
     $post = $stmt->fetch();
 ?>
 <div class="conatainer">

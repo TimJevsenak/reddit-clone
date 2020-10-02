@@ -20,6 +20,9 @@
     $query = "SELECT * FROM communities WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
+    if($stmt->rowCount()!=1){
+        header('location: index.php');
+    }
     $community = $stmt->fetch();
 ?>
 <div class="conatainer">
