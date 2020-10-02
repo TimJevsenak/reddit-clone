@@ -125,7 +125,7 @@
                 <div class="col-2"></div>
                 <div class="col-lg-8">
                     <?php 
-                        $query = "SELECT * FROM comments WHERE post_id=?";
+                        $query = "SELECT * FROM comments WHERE post_id=? ORDER BY date DESC";
                         $stmt = $pdo->prepare($query);
                         $stmt->execute([$id]);
                         if($stmt->rowCount() > 0) {

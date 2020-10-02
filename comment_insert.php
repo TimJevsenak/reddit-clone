@@ -10,5 +10,5 @@
         $stmt = $pdo->prepare($query);
         $stmt->execute([$text, $id, $_SESSION['user_id']]);
 
-        header("refresh:2;url=post_show.php?id=".$id);
+        header("location: post_show.php?id=".$id);
 ?>
