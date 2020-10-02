@@ -32,7 +32,8 @@ include_once './database.php';
                     </div>
                     <input name="image" type="file" id="image" class="form-control-file my-1">
                 </div>
-                <div class="form-group">
+                <div class="form-group text-center">
+                    <small class="text-muted">Which community will you post to?</small>
                     <select name="community_id" class="form-control">
                     <?php 
                         $st = 0;
