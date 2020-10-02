@@ -10,10 +10,14 @@
     $downvotes=0;
     $votes=0;
     $color="";
-    
+
     $query = "SELECT * FROM communities WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
+    if($stmt->rowCount()!=1){
+        header('location: index.php');
+    }
+    
     $community = $stmt->fetch();
 
     if(isset($_SESSION['user_id'])){
@@ -122,8 +126,8 @@
                             <div class="card-title my-2">
                             <div class="row">
                                 <div class="col-md-3 text-md-left px-4">
-                                <a href="community_show.php?id=' . $post['community_id'] . '"><img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
-                                <span class="text-muted">r/</span>' . $post['name'] . '</a>
+                                <img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
+                                <span class="text-muted">r/</span>' . $post['name'] . '
                                 </div>
                                 <div class="col-md-6 text-md-center">
                                 <h4 class="px-4">' . $post['title'] . '</h4>

@@ -10,6 +10,13 @@
     $votes=0;
     $color="";
 
+    $query = "SELECT * FROM posts WHERE id=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$id]);
+    if($stmt->rowCount()!=1){
+        header('location: index.php');
+    }
+
     function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
         $ago = new DateTime($datetime);
