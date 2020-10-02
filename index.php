@@ -116,6 +116,7 @@ $stmt->execute([$_SESSION['user_id']]);
                         <div class="btn-group align-middle">
                           <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
                           <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
+                          <a href="post_show.php?id=' . $post['id'] . '#bottom" class="text-dark ml-5" style="text-decoration: none;"><i class="fal fa-comment-lines fa-2x"></i></a>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
@@ -183,6 +184,7 @@ $stmt->execute([$_SESSION['user_id']]);
                         <div class="btn-group align-middle">
                           <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=1" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
                           <a href="post_vote_insert.php?id=' . $post['id'] . '&upvote=0" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
+                          <a href="post_show.php?id=' . $post['id'] . '#bottom" class="text-dark ml-5" style="text-decoration: none;"><i class="fal fa-comment-lines fa-2x"></i></a>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>
@@ -250,6 +252,7 @@ $stmt->execute([$_SESSION['user_id']]);
                         <div class="btn-group align-middle">
                           <i class="far fa-arrow-square-up fa-2x mx-1 text-danger"></i> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
                           <i class="far fa-arrow-square-down mx-1 fa-2x text-primary"></i>
+                          <a href="post_show.php?id=' . $post['id'] . '#bottom" class="text-dark ml-5" style="text-decoration: none;"><i class="fal fa-comment-lines fa-2x"></i></a>
                         </div>
                         <small class="text-muted">' . $date . '</small>
                       </div>

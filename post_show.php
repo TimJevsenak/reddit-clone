@@ -95,8 +95,8 @@
                 </button>';
                 }
                 else{
-                    echo '<a href="register.php"><button type="button" class="btn btn-light mb-5">
-                    Sign up to comment
+                    echo '<a href="login.php"><button type="button" class="btn btn-light mb-5">
+                    Sign in to comment
                     </button></a>';
                 }
             ?>
@@ -121,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+            <a id="bottom"></a>
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-lg-8">

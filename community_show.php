@@ -146,6 +146,7 @@
                                 <div class="btn-group">
                                 <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=1&cid=' . $post['community_id'] . '" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
                                 <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=0&cid=' . $post['community_id'] . '" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
+                                <a href="post_show.php?id=' . $post['id'] . '#bottom" class="text-dark ml-5" style="text-decoration: none;"><i class="fal fa-comment-lines fa-2x"></i></a>
                                 </div>
                                 <small class="text-muted">' . $date . '</small>
                             </div>
