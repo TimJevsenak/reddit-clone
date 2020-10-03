@@ -17,7 +17,7 @@
             $stmt = $pdo->prepare($query);
             $stmt->execute([$id, $_SESSION['user_id'], $upvote]);
 
-            header('location: index.php');
+            header('location: index.php#'.$id);
         }
         else{
             $query = "DELETE FROM post_votes WHERE post_id=? AND user_id=?";
