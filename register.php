@@ -5,7 +5,7 @@ include_once 'header.php';
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
-        <div class="col-4 my-5 text-center">
+        <div class="col-lg-4 my-5 text-center">
             <form class="form-signin" action="user_insert.php" method="post">
                 <h1 class="h2 my-4 font-weight-normal text-center">Sign Up</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>

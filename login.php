@@ -4,7 +4,7 @@ include_once 'header.php';
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
-        <div class="col-4 text-center my-5">
+        <div class="col-lg-4 text-center my-5">
             <form action="login_check.php" method="post" class="form-signin">
                 <h1 class="h2 my-4 font-weight-normal text-center">Sign In</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
