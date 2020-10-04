@@ -2,11 +2,19 @@
     include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
+    if(!isset($_SESSION['user_id'])){
+        header('location: index.php');
+    }
 
     $title=$_POST['title'];
     $post=$_POST['post'];
     $image=$_FILES["image"]["name"];
     $community_id = $_POST['community_id'];
+
+    if(empty($title) || empty($post) || empty($community_id))
+    {
+        header('location: index.php');
+    }
 
     if($image!=""){ 
         $query2 = "INSERT INTO posts (title,post,community_id,image,user_id)"

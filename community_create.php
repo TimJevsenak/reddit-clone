@@ -2,6 +2,9 @@
 include_once 'header.php';
 include_once 'session.php';
 include_once 'database.php';
+if(!isset($_SESSION['user_id'])){
+    header('location: index.php');
+}
 ?>
 
 <div class="container">

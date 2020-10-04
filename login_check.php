@@ -4,6 +4,10 @@ include_once './session.php';
 include_once './database.php';
 $email = $_POST['email'];
 $pass = $_POST['password'];
+if(empty($email) || empty($pass))
+    {
+        header('location: index.php');
+    }
 //preverim, če sem prejel podatke
 if (!empty($email) && !empty($pass)) {
     //$pass = sha1($pass.$salt);

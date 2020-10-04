@@ -2,11 +2,18 @@
     include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
+    if(!isset($_SESSION['user_id'])){
+        header('location: index.php');
+    }
 
     $name=$_POST['name'];
     $description=$_POST['description'];
     $title=$_POST['title'];
     $icon=$_FILES["image"]["name"];
+    if(empty($name) || empty($description) || empty($title) || empty($icon))
+    {
+        header('location: index.php');
+    }
 
     $query = "SELECT * FROM communities WHERE name=?";
     $stmt = $pdo->prepare($query);

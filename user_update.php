@@ -2,6 +2,9 @@
     include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
+    if(!isset($_SESSION['user_id'])){
+        header('location: index.php');
+    }
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -11,6 +14,10 @@
     $displayname=$_POST['displayName'];
     $descripton=$_POST['description'];
     $avatar=$_FILES["image"]["name"];
+    if(empty($username) || empty($email) || empty($password_current))
+    {
+        header('location: index.php');
+    }
     
     if($avatar!=""){
         if($password_new == $password_new_confirm)

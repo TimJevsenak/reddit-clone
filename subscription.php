@@ -1,6 +1,9 @@
 <?php 
     include_once 'database.php';
     include_once 'session.php';
+    if(!isset($_SESSION['user_id'])){
+        header('location: index.php');
+    }
 
     $community_id = $_GET['id'];
     $user_id = $_SESSION['user_id'];

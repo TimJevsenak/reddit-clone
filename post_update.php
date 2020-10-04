@@ -2,6 +2,9 @@
     include_once 'header.php';
     include_once 'session.php';
     include_once 'database.php';
+    if(!isset($_SESSION['user_id'])){
+        header('location: index.php');
+    }
 
     $id = $_POST['id'];
     $title = $_POST['title'];
@@ -9,6 +12,10 @@
     $image = $_FILES["image"]["name"];
     $st = 0;
     $_SESSION['post_id'] = $id;
+    if(empty($title) || empty($post) || empty($id))
+    {
+        header('location: index.php');
+    }
 
         if($image!=""){
             include_once 'post_file_upload.php';
