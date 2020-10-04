@@ -1,4 +1,5 @@
 <?php 
+    include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
 
@@ -26,10 +27,20 @@
 
         include_once 'post_file_upload.php';
 
-        header("refresh:2;url=profile.php");
+        echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Post created!",
+            }).then(function() {
+                window.location = "post_list.php";
+            });
+
+            </script>
+            ';
     }
     else{
-        echo 'No file was uploaded';
 
         $query2 = "INSERT INTO posts (title,post,community_id,user_id)"
         . "VALUES (?,?,?,?)";
@@ -46,6 +57,17 @@
 
         mkdir("post-uploads/".$post['id']);
 
-        header("refresh:5;url=profile.php");
+        echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Post created!",
+            }).then(function() {
+                window.location = "post_list.php";
+            });
+
+            </script>
+            ';
     }
 ?>

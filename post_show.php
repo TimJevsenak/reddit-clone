@@ -72,7 +72,7 @@
 ?>
 
     <div class="row mt-5">
-        <div class="col-2 text-right"><a href="index.php#<?php echo $id; ?>" style="color: black; text-decoration: none;"><i class="fas fa-backspace fa-2x"></i></a></div>
+        <div class="col-2 text-right"><a href="javascript:history.back()" style="color: black; text-decoration: none;"><i class="fas fa-backspace fa-2x"></i></a></div>
         <div class="col-lg-8 text-center">
             <h2><?php echo $post['title']; ?></h2>
             <?php

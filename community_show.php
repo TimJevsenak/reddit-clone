@@ -86,7 +86,7 @@
         <div class="col-2">
             <?php 
                 if(isset($_SESSION['user_id'])){
-                    echo '<a href="communities.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>';
+                    echo '<a href="javascript:history.back()"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>';
                 }
             ?>
         </div>

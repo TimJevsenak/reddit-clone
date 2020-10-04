@@ -1,4 +1,5 @@
 <?php
+    include_once 'header.php';
     include_once 'session.php';
     include_once 'database.php';
 
@@ -17,7 +18,18 @@
             $stmt = $pdo->prepare($query);
             $stmt->execute([$title, $post, $image, $id]);
 
-            header('refresh:5;url=post_edit.php?id=' . $id);
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully updated the post!",
+            }).then(function() {
+                window.location = "post_edit.php?id=' . $id . '";
+            });
+
+            </script>
+            ';
             }
             else{
                 if($isup == 1){
@@ -25,23 +37,55 @@
                     $stmt = $pdo->prepare($query);
                     $stmt->execute([$title, $post, $image, $id]);
 
-                    header('refresh:5;url=post_edit.php?id=' . $id);
+                    echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully updated the post!",
+            }).then(function() {
+                window.location = "post_edit.php?id=' . $id . '";
+            });
+
+            </script>
+            ';
                 }
                 else{
                 $query = "UPDATE posts SET title=?, post=? WHERE id=?";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$title, $post, $id]);
         
-                header('refresh:5;url=post_edit.php?id=' . $id);
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully updated the post!",
+            }).then(function() {
+                window.location = "post_edit.php?id=' . $id . '";
+            });
+
+            </script>
+            ';
                 }
             }
         }
         else{
-            echo 'No file was uploaded.';
             $query = "UPDATE posts SET title=?, post=? WHERE id=?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$title, $post, $id]);
-            header('refresh:5;url=post_edit.php?id=' . $id);
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully updated the post!",
+            }).then(function() {
+                window.location = "post_edit.php?id=' . $id . '";
+            });
+
+            </script>
+            ';
         }
 
 ?>
