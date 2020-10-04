@@ -7,6 +7,7 @@
         <div class="col-lg-4">
             <h3 class="text-success">Thank you for registering!</h3>
             <p class="text-info">Now please confirm your email.</p>
+            <p class="text-muted">Note check your spam folder.</p>
         </div>
         <div class="col-4"></div>
     </div>
