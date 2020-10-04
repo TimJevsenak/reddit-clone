@@ -42,6 +42,20 @@ if (!empty($email) && !empty($pass)) {
                 //header("Location: index.php");
                 die();
             }
+            else{
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "Wrong email or password",
+            }).then(function() {
+                window.location = "login.php";
+            });
+
+            </script>
+            ';
+            }
         }
         else{
             echo '
@@ -59,17 +73,9 @@ if (!empty($email) && !empty($pass)) {
         }
     }
 }
-echo '
-<script type="text/javascript">
+else{
+    header('location: login.php');
+}
 
-Swal.fire({
-    icon: "error",
-    text: "Wrong email or password",
-  }).then(function() {
-    window.location = "login.php";
-});
-
-</script>
-';
 //header("Location: login.php");
 ?>
