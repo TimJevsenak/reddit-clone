@@ -1,6 +1,7 @@
 <?php 
-    include_once './database.php';
-    include_once './session.php';
+    include_once 'header.php';
+    include_once 'database.php';
+    include_once 'session.php';
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -22,9 +23,42 @@
             if ($stmt->rowCount() == 1) {
                 $user = $stmt->fetch();
             }
+    
             else{
-                echo 'Multiple users returned whit SQL query.';
-                header("refresh:2;url=profile.php");
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "That email address is taken!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
+            }
+            $query = "SELECT * FROM users WHERE username=?";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+    
+            if ($stmt->rowCount() == 1) {
+                $user = $stmt->fetch();
+            }
+    
+            else{
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "That username address is taken!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
             }
     
             if (password_verify($password_current, $user['pass'])) {
@@ -53,8 +87,18 @@
                     $_SESSION['displayname'] = $user2['displayname'];
                     $_SESSION['description'] = $user2['description'];
                     $_SESSION['avatar'] = $user2['avatar'];
-                    echo 'succes!';
-                    header("refresh:2;url=profile.php");
+                    echo '
+                    <script type="text/javascript">
+        
+                    Swal.fire({
+                        icon: "success",
+                        text: "Profile successfully updated!",
+                    }).then(function() {
+                        window.location = "profile.php";
+                    });
+        
+                    </script>
+                    ';
                 }
                 else{
                     if($password_new != ''){
@@ -63,7 +107,6 @@
                     else{
                         $pass = password_hash($password_current, PASSWORD_DEFAULT);
                     }
-                    echo 'No avatar added.';
                     if($isup == 1){
                         $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
                         $stmt = $pdo->prepare($query2);
@@ -80,7 +123,18 @@
                         $_SESSION['description'] = $user2['description'];
                         $_SESSION['avatar'] = $user2['avatar'];
                     
-                        header("refresh:2;url=profile.php");
+                        echo '
+                    <script type="text/javascript">
+        
+                    Swal.fire({
+                        icon: "success",
+                        text: "Profile successfully updated!",
+                    }).then(function() {
+                        window.location = "profile.php";
+                    });
+        
+                    </script>
+                    ';
                     }
                     else{
                         $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
@@ -98,24 +152,54 @@
                         $_SESSION['description'] = $user2['description'];
                         $_SESSION['avatar'] = $user2['avatar'];
                         
-                        header("refresh:2;url=profile.php");
+                        echo '
+                        <script type="text/javascript">
+            
+                        Swal.fire({
+                            icon: "success",
+                            text: "Profile successfully updated!",
+                        }).then(function() {
+                            window.location = "profile.php";
+                        });
+            
+                        </script>
+                        ';
                     }
                 }
             }
 
             else{
-                echo 'Current password not corect.';
-                header("refresh:2;url=profile.php");
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "Current password is not correct!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
             }
         }
         else{
-            echo 'New passwords do not match.';
-            header("refresh:2;url=profile.php");
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "New passwords do not match!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
         }
     }
     else
     {
-        echo 'No file was uploaded';
         if($password_new == $password_new_confirm)
         {
     
@@ -128,8 +212,40 @@
             }
     
             else{
-                echo 'Multiple users returned whit SQL query.';
-                header("refresh:2;url=profile.php");
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "That email address is taken!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
+            }
+            $query = "SELECT * FROM users WHERE username=?";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+    
+            if ($stmt->rowCount() == 1) {
+                $user = $stmt->fetch();
+            }
+    
+            else{
+                echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "That username address is taken!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
             }
     
             if (password_verify($password_current, $user['pass'])) {
@@ -156,17 +272,47 @@
                 $_SESSION['displayname'] = $user2['displayname'];
                 $_SESSION['description'] = $user2['description'];
                 $_SESSION['avatar'] = $user2['avatar'];
-                echo 'succes!';
-                header("refresh:2;url=profile.php");
+                echo '
+                    <script type="text/javascript">
+        
+                    Swal.fire({
+                        icon: "success",
+                        text: "Profile successfully updated!",
+                    }).then(function() {
+                        window.location = "profile.php";
+                    });
+        
+                    </script>
+                    ';
             }
             else{
-                echo 'Current password not corect.';
-                header("refresh:2;url=profile.php");
+                 echo '
+                <script type="text/javascript">
+    
+                Swal.fire({
+                    icon: "error",
+                    text: "Current password is not correct!",
+                }).then(function() {
+                    window.location = "profile.php";
+                });
+    
+                </script>
+                ';
             }
         }
         else{
-            echo 'New passwords do not match.';
-            header("refresh:2;url=profile.php");
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "New passwords do not match!",
+            }).then(function() {
+                window.location = "profile.php";
+            });
+
+            </script>
+            ';
         }
     }
 
