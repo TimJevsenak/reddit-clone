@@ -21,7 +21,19 @@ if (!empty($email) && !empty($pass)) {
             $_SESSION['displayname'] = $user['displayname'];
             $_SESSION['description'] = $user['description'];
             $_SESSION['avatar'] = $user['avatar'];
-            header("Location: index.php");
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully loged in!",
+            }).then(function() {
+                window.location = "index.php";
+            });
+
+            </script>
+            ';
+            //header("Location: index.php");
             die();
         }
     }
@@ -31,7 +43,6 @@ echo '
 
 Swal.fire({
     icon: "error",
-    title: "Ops...",
     text: "Wrong email or password",
   }).then(function() {
     window.location = "login.php";
