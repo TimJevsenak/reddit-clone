@@ -26,21 +26,37 @@ if(!isset($_SESSION['user_id'])){
                 </div>
                 <div class="form-group text-center">
                     <small class="text-muted">Which community will you post to?</small>
-                    <select name="community_id" class="form-control">
                     <?php 
                         $st = 0;
 
                         $query3 = "SELECT c.id, c.name FROM communities c INNER JOIN subscriptions s ON c.id=s.community_id INNER JOIN users u ON u.id=s.user_id WHERE u.id=?";
                         $stmt = $pdo->prepare($query3);
                         $stmt->execute([$_SESSION['user_id']]);
+                        if($stmt->rowCount() > 0){
+                            echo '<select name="community_id" class="form-control" required="">';
 
-                        while($st < $stmt->rowCount()) {
-                            $community = $stmt->fetch();
-                            echo '<option value="' . $community['id'] . '"><span class="text-muted">r</span>/' . $community['name'] . "</option>";
-                            $st++;
+                            while($st < $stmt->rowCount()) {
+                                $community = $stmt->fetch();
+                                echo '<option value="' . $community['id'] . '"><span class="text-muted">r</span>/' . $community['name'] . "</option>";
+                                $st++;
+                            }
+                            echo '</select>';
+                        }
+                        else{
+                            echo '
+                            <script type="text/javascript">
+
+                            Swal.fire({
+                                icon: "error",
+                                text: "You need to subscribe to a community to post!",
+                            }).then(function() {
+                                window.location = "profile.php?id=";
+                            });
+
+                            </script>
+                            ';
                         }
                         ?>
-                    </select>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success" type="submit" name="submit">Post</button>

@@ -17,9 +17,9 @@
             <h2>All users</h2>
             <?php 
                 $st = 0;
-                $query = "SELECT * FROM users";
+                $query = "SELECT * FROM users WHERE id not in (?) ORDER BY dateCreated DESC";
                 $stmt = $pdo->prepare($query);
-                $stmt->execute();
+                $stmt->execute([$_SESSION['user_id']]);
                 if($stmt->rowCount() > 0) {
                     while($st < $stmt->rowCount()) {
                         $user = $stmt->fetch();
@@ -35,7 +35,7 @@
             <h2>All communities</h2>
             <?php 
                 $st = 0;
-                $query = "SELECT * FROM communities";
+                $query = "SELECT * FROM communities ORDER BY dateCreated DESC";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
                 if($stmt->rowCount() > 0) {
@@ -53,7 +53,7 @@
             <h2>All posts</h2>
             <?php 
                 $st = 0;
-                $query = "SELECT * FROM posts";
+                $query = "SELECT * FROM posts ORDER BY date DESC";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
                 if($stmt->rowCount() > 0) {
