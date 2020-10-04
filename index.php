@@ -49,7 +49,7 @@ $stmt->execute([$_SESSION['user_id']]);
 ?>
 
 <main role="main">
-
+  
     <div class="container text-center mt-5">
       <h3><i class="fas fa-home-lg-alt"></i></h3>
       <h1>Home</h1>
