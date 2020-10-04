@@ -42,8 +42,12 @@ include_once './session.php';
       }
       else{
         echo '
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <ul class="navbar-nav ml-auto">';
+        if($_SESSION['admin']){
+        echo '<li class="nav-item">
+            <a class="nav-link pb-sm-0" href="admin.php"><button class="btn btn-sm btn-dark my-2 my-sm-0">Admin panel</button></a>
+          </li>';}
+        echo '<li class="nav-item">
             <a class="nav-link pb-sm-0" href="logout.php"><button class="btn btn-sm btn-info my-2 my-sm-0">Log Out</button></a>
           </li>';
         echo '<li class="nav-item">

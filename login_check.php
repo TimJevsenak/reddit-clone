@@ -25,6 +25,7 @@ if (!empty($email) && !empty($pass)) {
             $_SESSION['displayname'] = $user['displayname'];
             $_SESSION['description'] = $user['description'];
             $_SESSION['avatar'] = $user['avatar'];
+            $_SESSION['admin'] = $user['admin'];
             echo '
             <script type="text/javascript">
 
