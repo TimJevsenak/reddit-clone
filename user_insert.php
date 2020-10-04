@@ -1,4 +1,5 @@
 <?php
+include_once 'header.php';
 include_once 'database.php';
 include_once 'session.php';
 
@@ -12,42 +13,93 @@ $stmt = $pdo->prepare($query);
 $stmt->execute([$email]);
 
 if($stmt->rowCount() == 0){
-//preverim podatke, da so obvezi vnešeni
-    if (!empty($username)
-            && !empty($email) && !empty($password)
-            && ($password == $password_confirm)) {
-        
-        //$pass = sha1($pass1.$salt);
-        $pass = password_hash($password, PASSWORD_DEFAULT);
-        
-        $query = "INSERT INTO users (username,email,pass)"
-                . "VALUES (?,?,?)";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$username,$email,$pass]);
+    $query = "SELECT * FROM users WHERE username=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$username]);
+    if($stmt->rowCount() == 0){
 
-        $query2 = "SELECT * FROM users WHERE email=?";
-        $stmt = $pdo->prepare($query2);
-        $stmt->execute([$email]);
+        if (!empty($username)
+                && !empty($email) && !empty($password)
+                && ($password == $password_confirm)) {
+            
+            $pass = password_hash($password, PASSWORD_DEFAULT);
+            
+            $query = "INSERT INTO users (username,email,pass)"
+                    . "VALUES (?,?,?)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username,$email,$pass]);
 
-        if ($stmt->rowCount() == 1) {
-            $user = $stmt->fetch();
+            $query2 = "SELECT * FROM users WHERE email=?";
+            $stmt = $pdo->prepare($query2);
+            $stmt->execute([$email]);
+
+            if ($stmt->rowCount() == 1) {
+                $user = $stmt->fetch();
+            }
+            mkdir("user-uploads/".$user['id']);
+
+            $_SESSION['user_id'] = $user['id']; 
+            $_SESSION['username'] = $user['username']; 
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['displayname'] = $user['displayname'];
+            $_SESSION['description'] = $user['description'];
+            $_SESSION['avatar'] = $user['avatar'];
+            
+            echo '
+                <script type="text/javascript">
+
+                Swal.fire({
+                    icon: "success",
+                    text: "Account added!",
+                }).then(function() {
+                    window.location = "index.php";
+                });
+
+                </script>
+                ';
         }
-        mkdir("user-uploads/".$user['id']);
+        else {
+            echo '
+                <script type="text/javascript">
 
-        $_SESSION['user_id'] = $user['id']; 
-        $_SESSION['username'] = $user['username']; 
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['displayname'] = $user['displayname'];
-        $_SESSION['description'] = $user['description'];
-        $_SESSION['avatar'] = $user['avatar'];
-        
-        header("Location: index.php");
+                Swal.fire({
+                    icon: "error",
+                    text: "Make sure that both passwords match!",
+                }).then(function() {
+                    window.location = "register.php";
+                });
+
+                </script>
+                ';
+        }
     }
-    else {
-        header("Location: register.php");
+    else{
+        echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "A user with that username already exists!",
+            }).then(function() {
+                window.location = "register.php";
+            });
+
+            </script>
+            ';
     }
 }
 else{
-    header("Location: register.php");
+    echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "A user with that email already exists!",
+            }).then(function() {
+                window.location = "register.php";
+            });
+
+            </script>
+            ';
 }
 ?>
