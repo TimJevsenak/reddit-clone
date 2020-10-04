@@ -1,10 +1,17 @@
 <?php
     include_once 'database.php';
     include_once 'session.php';
+    include_once 'header.php';
 
     $id = $_GET['id'];
     $st = 0;
     $st2 = 0;
+
+    $query = "SELECT * FROM communities WHERE id=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$id]);
+    $community = $stmt->fetch();
+if($community['user_id'] == $_SESSION['user_id']){
 
     $query = "SELECT * FROM posts WHERE community_id=?";
     $stmt = $pdo->prepare($query);
@@ -45,5 +52,23 @@
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
 
-    header('location: community_list.php');
+    array_map('unlink', glob("community-uploads/$id/*.*"));
+    rmdir("community-uploads/$id");
+
+    echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Community deleted!",
+            }).then(function() {
+                window.location = "community_list.php";
+            });
+
+            </script>
+            ';
+}
+else{
+    header('location: index.php');
+}
 ?>
