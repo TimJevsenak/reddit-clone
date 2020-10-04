@@ -11,7 +11,7 @@ include_once './session.php';
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="siteIcons/logo.jpg" type="png" sizes="16x16">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://kit.fontawesome.com/9546f008dc.js" crossorigin="anonymous"></script>
     <script src="icons.js" defer></script>
 </head>
