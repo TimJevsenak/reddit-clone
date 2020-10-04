@@ -1,4 +1,5 @@
 <?php 
+    include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
 
@@ -31,11 +32,20 @@
 
             include_once 'community_file_upload.php';
 
-            header("refresh:2;url=profile.php");
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully created the community!",
+            }).then(function() {
+                window.location = "community_list.php";
+            });
+
+            </script>
+            ';
         }
         else{
-            echo 'No file was uploaded';
-
             $query2 = "INSERT INTO communities (name,description,title,user_id)"
             . "VALUES (?,?,?,?)";
             $stmt = $pdo->prepare($query2);
@@ -52,11 +62,32 @@
 
             mkdir("community-uploads/".$community['id']);
 
-            header("refresh:5;url=profile.php");
+            echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "success",
+                text: "Successfully created the community!",
+            }).then(function() {
+                window.location = "community_list.php";
+            });
+
+            </script>
+            ';
         }
     }
     else{
-        echo 'Name already taken.';
-        header('refresh:5;url=profile.php');
+        echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "A community with that name already exists!",
+            }).then(function() {
+                window.location = "community_create.php";
+            });
+
+            </script>
+            ';
     }
 ?>
