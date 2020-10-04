@@ -13,6 +13,7 @@ CREATE TABLE `users`
   `coins` Int NOT NULL DEFAULT 0,
   `karma` Int NOT NULL DEFAULT 1,
   `admin` Boolean DEFAULT NULL,
+  `verified` Boolean DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
 ;
