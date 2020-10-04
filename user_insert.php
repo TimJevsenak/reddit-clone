@@ -22,14 +22,15 @@ if($stmt->rowCount() == 0){
                 && !empty($email) && !empty($password)
                 && ($password == $password_confirm)) {
             
-            if(strlen($password) > 5){
+            if(strlen($password) >= 5){
+                $vkey = md5(time().$username);
             
                 $pass = password_hash($password, PASSWORD_DEFAULT);
                 
-                $query = "INSERT INTO users (username,email,pass)"
-                        . "VALUES (?,?,?)";
+                $query = "INSERT INTO users (username,email,pass,vkey)"
+                        . "VALUES (?,?,?,?)";
                 $stmt = $pdo->prepare($query);
-                $stmt->execute([$username,$email,$pass]);
+                $stmt->execute([$username,$email,$pass,$vkey]);
 
                 $query2 = "SELECT * FROM users WHERE email=?";
                 $stmt = $pdo->prepare($query2);
@@ -38,23 +39,27 @@ if($stmt->rowCount() == 0){
                 if ($stmt->rowCount() == 1) {
                     $user = $stmt->fetch();
                 }
+
+                //send Email
+                $to = $email;
+                $subject = "Email verification";
+                $message = "<a href='http://localhost/read-it/verify_email.php?vkey=$vkey'>Register account</a>";
+                $headers = "From: readit.timjevsenak@gmail.com";
+                $headers .= 'MIME-Version: 1.0' . '\r\n';
+                $headers .= 'Content-type: text/html; charset=iso-8859-1'. '\r\n';
+
                 mkdir("user-uploads/".$user['id']);
 
-                $_SESSION['user_id'] = $user['id']; 
-                $_SESSION['username'] = $user['username']; 
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['displayname'] = $user['displayname'];
-                $_SESSION['description'] = $user['description'];
-                $_SESSION['avatar'] = $user['avatar'];
+                mail($to, $subject, $message, $headers);
                 
                 echo '
                     <script type="text/javascript">
 
                     Swal.fire({
                         icon: "success",
-                        text: "Account added!",
+                        text: "Account added. Please verify your email address.",
                     }).then(function() {
-                        window.location = "index.php";
+                        window.location = "thankyou.php";
                     });
 
                     </script>

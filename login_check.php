@@ -18,28 +18,44 @@ if (!empty($email) && !empty($pass)) {
     
     if ($stmt->rowCount() == 1) {
         $user = $stmt->fetch();
-        if (password_verify($pass, $user['pass'])) {
-            $_SESSION['user_id'] = $user['id']; 
-            $_SESSION['username'] = $user['username']; 
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['displayname'] = $user['displayname'];
-            $_SESSION['description'] = $user['description'];
-            $_SESSION['avatar'] = $user['avatar'];
-            $_SESSION['admin'] = $user['admin'];
+        if($user['verified']){
+            if (password_verify($pass, $user['pass'])) {
+                $_SESSION['user_id'] = $user['id']; 
+                $_SESSION['username'] = $user['username']; 
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['displayname'] = $user['displayname'];
+                $_SESSION['description'] = $user['description'];
+                $_SESSION['avatar'] = $user['avatar'];
+                $_SESSION['admin'] = $user['admin'];
+                echo '
+                <script type="text/javascript">
+
+                Swal.fire({
+                    icon: "success",
+                    text: "Successfully loged in!",
+                }).then(function() {
+                    window.location = "index.php";
+                });
+
+                </script>
+                ';
+                //header("Location: index.php");
+                die();
+            }
+        }
+        else{
             echo '
             <script type="text/javascript">
 
             Swal.fire({
-                icon: "success",
-                text: "Successfully loged in!",
+                icon: "error",
+                text: "Email not verified!",
             }).then(function() {
-                window.location = "index.php";
+                window.location = "login.php";
             });
 
             </script>
             ';
-            //header("Location: index.php");
-            die();
         }
     }
 }
