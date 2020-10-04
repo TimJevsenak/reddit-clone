@@ -14,6 +14,7 @@ CREATE TABLE `users`
   `karma` Int NOT NULL DEFAULT 1,
   `admin` Boolean DEFAULT NULL,
   `verified` Boolean DEFAULT NULL,
+  `vkey` Varchar(255),
   PRIMARY KEY (`id`)
 )
 ;
