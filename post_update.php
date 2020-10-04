@@ -20,11 +20,20 @@
             header('refresh:5;url=post_edit.php?id=' . $id);
             }
             else{
+                if($isup == 1){
+                    $query = "UPDATE posts SET title=?, post=?, image=? WHERE id=?";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute([$title, $post, $image, $id]);
+
+                    header('refresh:5;url=post_edit.php?id=' . $id);
+                }
+                else{
                 $query = "UPDATE posts SET title=?, post=? WHERE id=?";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$title, $post, $id]);
         
                 header('refresh:5;url=post_edit.php?id=' . $id);
+                }
             }
         }
         else{

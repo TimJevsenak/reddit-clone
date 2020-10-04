@@ -4,6 +4,7 @@ if($_FILES["image"]["name"]!=""){
   $target_dir = "post-uploads/".$_SESSION['post_id']."/";
   $target_file = $target_dir . basename($_FILES["image"]["name"]);
   $uploadOk = 1;
+  $isup = 0;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
   // Check if image file is a actual image or fake image
@@ -22,6 +23,7 @@ if($_FILES["image"]["name"]!=""){
   if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
+    $isup = 1;
   }
 
   // Check file size

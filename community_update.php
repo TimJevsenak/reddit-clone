@@ -38,11 +38,20 @@
             header('refresh:5;url=community_edit.php?id=' . $id);
             }
             else{
+                if($isup == 1){
+                    $query2 = "UPDATE communities SET description=?, title=?, icon=? WHERE id=?";
+                    $stmt = $pdo->prepare($query2);
+                    $stmt->execute([$description, $title, $icon, $id]);
+        
+                    header('refresh:5;url=community_edit.php?id=' . $id); 
+                }
+                else{
                 $query2 = "UPDATE communities SET description=?, title=? WHERE id=?";
                 $stmt = $pdo->prepare($query2);
                 $stmt->execute([$description, $title, $id]);
         
                 header('refresh:5;url=community_edit.php?id=' . $id);
+                }
             }
         }
         else{
@@ -66,11 +75,20 @@
             header('refresh:5;url=community_edit.php?id=' . $id);
             }
             else{
+                if($isup == 1){
+                    $query2 = "UPDATE communities SET description=?, title=?, icon=? WHERE id=?";
+                    $stmt = $pdo->prepare($query2);
+                    $stmt->execute([$description, $title, $icon, $id]);
+        
+                    header('refresh:5;url=community_edit.php?id=' . $id); 
+                }
+                else{
                 $query2 = "UPDATE communities SET name=?, description=?, title=? WHERE id=?";
                 $stmt = $pdo->prepare($query2);
                 $stmt->execute([$name, $description, $title, $id]);
         
                 header('refresh:5;url=community_edit.php?id=' . $id);
+                }
             }
         }
         else{
