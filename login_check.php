@@ -1,4 +1,5 @@
 <?php
+include_once 'header.php';
 include_once './session.php';
 include_once './database.php';
 $email = $_POST['email'];
@@ -25,5 +26,18 @@ if (!empty($email) && !empty($pass)) {
         }
     }
 }
-header("Location: login.php");
+echo '
+<script type="text/javascript">
+
+Swal.fire({
+    icon: "error",
+    title: "Ops...",
+    text: "Wrong email or password",
+  }).then(function() {
+    window.location = "login.php";
+});
+
+</script>
+';
+//header("Location: login.php");
 ?>
