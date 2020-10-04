@@ -12,6 +12,7 @@ CREATE TABLE `users`
   `dateUpdated` Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `coins` Int NOT NULL DEFAULT 0,
   `karma` Int NOT NULL DEFAULT 1,
+  `admin` Boolean DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
 ;
