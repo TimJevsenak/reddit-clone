@@ -49,14 +49,29 @@ if($stmt->rowCount() == 0){
     ';
 }
 else{
+    $query = "SELECT * FROM users WHERE email=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$email]);
+
+    $user = $stmt->fetch();
+
+    $_SESSION['user_id'] = $user['id']; 
+    $_SESSION['username'] = $user['username']; 
+    $_SESSION['pass'] = $password; 
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['displayname'] = $user['displayname'];
+    $_SESSION['description'] = $user['description'];
+    $_SESSION['avatar'] = $user['avatar'];
+    $_SESSION['admin'] = $user['admin'];
+
     echo '
     <script type="text/javascript">
 
     Swal.fire({
-        icon: "error",
-        text: "A user with that username already exists!",
+        icon: "success",
+        text: "Successfully signed in!",
     }).then(function() {
-        window.location = "login.php";
+        window.location = "index.php";
     });
 
     </script>

@@ -72,6 +72,20 @@ if (!empty($email) && !empty($pass)) {
             ';
         }
     }
+    else{
+        echo '
+            <script type="text/javascript">
+
+            Swal.fire({
+                icon: "error",
+                text: "Please sign in whit google or facebook to continue!",
+            }).then(function() {
+                window.location = "login.php";
+            });
+
+            </script>
+            ';
+    }
 }
 else{
     header('location: login.php');
