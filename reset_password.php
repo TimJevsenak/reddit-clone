@@ -13,7 +13,6 @@
         $stmt->execute([$passkey]);
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-        if($stmt->rowCount()==1){
             $user = $stmt->fetch();
             $query = "UPDATE users SET pass=? WHERE passkey=?";
             $stmt = $pdo->prepare($query);
@@ -39,21 +38,6 @@
 
                         </script>
                         ';
-        }
-        else{
-            echo '
-                        <script type="text/javascript">
-
-                        Swal.fire({
-                            icon: "error",
-                            text: "Unable to change password!",
-                        }).then(function() {
-                            window.location = "index.php";
-                        });
-
-                        </script>
-                        ';
-        }
     }
     else{
         echo '
