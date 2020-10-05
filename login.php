@@ -2,9 +2,55 @@
 include_once 'header.php';
 include_once 'session.php';
 include_once 'database.php';
-
-
 ?>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/sl_SI/sdk.js#xfbml=1&version=v8.0&appId=950579208754531&autoLogAppEvents=1" nonce="5T364vLs"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{950579208754531}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v8.0}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+   // console.log(response.authResponse.accessToken);
+    FB.api('/me', { locale: 'si_SI', fields: 'name, email,birthday, hometown,education,gender,website,work' },
+          function(response) {
+            var form = $('<form action="socialLogin.php" method="post">' +
+            '<input type="text" name="email" value="' + response.email + '" />'
+            +
+            '<input type="text" name="username" value="' + response.name + '" />'+
+            '</form>');
+            $('body').append(form);
+            form.submit();
+
+            console.log(response.email);
+            console.log(response.name);
+          }
+        );
+  }
+  });
+}
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
@@ -19,6 +65,7 @@ include_once 'database.php';
                     <button class="btn btn-primary" type="submit">Sign in</button>
                     <h5 class="my-4">OR</h5>
                     <div class="g-signin2 btn" data-onsuccess="onSignIn"></div>
+                    <div class="fb-login-button btn" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
                 </div>
             </form>
             <div class="mt-5">
