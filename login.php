@@ -34,7 +34,7 @@ function checkLoginState() {
    // console.log(response.authResponse.accessToken);
     FB.api('/me', { locale: 'si_SI', fields: 'name, email,birthday, hometown,education,gender,website,work' },
           function(response) {
-            var form = $('<form action="socialLogin.php" method="post">' +
+            var form = $('<form action="login_check_google.php" method="post">' +
             '<input type="text" name="email" value="' + response.email + '" />'
             +
             '<input type="text" name="username" value="' + response.name + '" />'+
