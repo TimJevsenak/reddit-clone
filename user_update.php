@@ -22,7 +22,7 @@
     if($avatar!=""){
         if($password_new == $password_new_confirm)
         {
-            if(strlen($password_new) >= 5 && $password_new!=""){
+            if(strlen($password_new) >= 5 && strlen($password_new) != 0){
         
                 $query = "SELECT * FROM users WHERE email=?";
                 $stmt = $pdo->prepare($query);
