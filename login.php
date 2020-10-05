@@ -1,5 +1,9 @@
 <?php
 include_once 'header.php';
+include_once 'session.php';
+include_once 'database.php';
+
+
 ?>
 <div class="container">
     <div class="row">
@@ -17,6 +21,10 @@ include_once 'header.php';
                     <div class="g-signin2 btn" data-onsuccess="onSignIn"></div>
                 </div>
             </form>
+            <form method="post" id="theForm" action="index.php">
+                <input id="username" type="hidden" name="username" value="John">
+                <input id="email" type="hidden" name="email" value="2pm">
+            </form>
             <div class="mt-5">
             <a class="mt-5" href="register.php">Don't have an account?</a><br>
             <a class="my-2" href="forgot_password.php">Forgot password?</a>
@@ -25,6 +33,21 @@ include_once 'header.php';
         <div class="col-4"></div>
     </div>
 </div>
+
+<script>
+    function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('Name: ' + profile.getName());
+    console.log('Email: ' + profile.getEmail());
+    $(function () {
+        $('#username').val(profile.getName());
+    });
+    $(function () {
+        $('#email').val(profile.getEmail());
+    });
+    document.getElementById('theForm').submit();
+}
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
