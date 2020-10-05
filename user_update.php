@@ -60,7 +60,7 @@
 
                 Swal.fire({
                     icon: "error",
-                    text: "That username address is taken!",
+                    text: "That username is taken!",
                 }).then(function() {
                     window.location = "profile.php";
                 });
@@ -78,9 +78,6 @@
                         }
                         else{
                             $pass = password_hash($password_current, PASSWORD_DEFAULT);
-                        }
-                        if(empty($password_current)){
-                            $password_current = "social";
                         }
             
                         $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
@@ -117,9 +114,6 @@
                         }
                         else{
                             $pass = password_hash($password_current, PASSWORD_DEFAULT);
-                        }
-                        if(empty($password_current)){
-                            $password_current = "social";
                         }
                         if($isup == 1){
                             $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";

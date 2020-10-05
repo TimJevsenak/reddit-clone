@@ -33,7 +33,7 @@ if(!isset($_SESSION['user_id'])){
                 <label for="inputUsername" class="sr-only">Username</label>
                 <input name="username" type="text" id="inputUsername" class="form-control my-1" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" required="">
                 <label for="inputPassword" class="sr-only">Current password</label>
-                <input name="password_current" type="password" id="inputPassword" class="form-control my-1" placeholder="Current password">
+                <input name="password_current" type="password" id="inputPassword" class="form-control my-1" <?php if(isset($_SESSION['pass'])) echo 'value="' . $_SESSION['pass'] . '"'; ?> placeholder="Current password">
                 <label for="inputPasswordNew" class="sr-only">Password</label>
                 <input name="password_new" type="password" id="inputPasswordNew" class="form-control my-1" placeholder="New password">
                 <label for="inputPasswordNewConfirm" class="sr-only">Confirm password</label>

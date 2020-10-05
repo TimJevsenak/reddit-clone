@@ -5,6 +5,8 @@ include_once './database.php';
 
 $username = $_POST['username'];
 $email = $_POST['email'];
+$password = md5(time().$username);
+$pass = password_hash($password, PASSWORD_DEFAULT);
 
 $query = "SELECT * FROM users WHERE email=?";
 $stmt = $pdo->prepare($query);
@@ -12,9 +14,9 @@ $stmt->execute([$email]);
 
 if($stmt->rowCount() == 0){
     $query = "INSERT INTO users (username,email,pass)"
-                        . "VALUES (?,?,'social')";
+                        . "VALUES (?,?,?)";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$username,$email]);
+    $stmt->execute([$username,$email,$pass]);
 
     $query = "SELECT * FROM users WHERE email=?";
     $stmt = $pdo->prepare($query);
@@ -22,8 +24,11 @@ if($stmt->rowCount() == 0){
 
     $user = $stmt->fetch();
 
+    mkdir("user-uploads/".$user['id']);
+
     $_SESSION['user_id'] = $user['id']; 
     $_SESSION['username'] = $user['username']; 
+    $_SESSION['pass'] = $password; 
     $_SESSION['email'] = $user['email'];
     $_SESSION['displayname'] = $user['displayname'];
     $_SESSION['description'] = $user['description'];
