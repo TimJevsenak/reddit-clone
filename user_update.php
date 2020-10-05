@@ -18,10 +18,6 @@
     {
         header('location: index.php');
     }
-
-    if(empty($password_current)){
-        $password_current = "social";
-    }
     
     if($avatar!=""){
         if($password_new == $password_new_confirm)
@@ -83,6 +79,9 @@
                         else{
                             $pass = password_hash($password_current, PASSWORD_DEFAULT);
                         }
+                        if(empty($password_current)){
+                            $password_current = "social";
+                        }
             
                         $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
                         $stmt = $pdo->prepare($query2);
@@ -118,6 +117,9 @@
                         }
                         else{
                             $pass = password_hash($password_current, PASSWORD_DEFAULT);
+                        }
+                        if(empty($password_current)){
+                            $password_current = "social";
                         }
                         if($isup == 1){
                             $query2 = "UPDATE users SET username=?, email=?, pass=?, displayname=?, description=?, avatar=?, dateUpdated=CURRENT_TIMESTAMP WHERE email=?;";
