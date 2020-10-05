@@ -15,6 +15,7 @@ CREATE TABLE `users`
   `admin` Boolean DEFAULT NULL,
   `verified` Boolean DEFAULT NULL,
   `vkey` Varchar(255),
+  `passkey` Varchar(255),
   PRIMARY KEY (`id`)
 )
 ;

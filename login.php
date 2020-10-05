@@ -17,7 +17,7 @@ include_once 'header.php';
             </form>
             <div class="mt-5">
             <a class="mt-5" href="register.php">Don't have an account?</a><br>
-            <a class="my-2" href="">Forgot password?</a>
+            <a class="my-2" href="forgot_password.php">Forgot password?</a>
             </div>
         </div>
         <div class="col-4"></div>

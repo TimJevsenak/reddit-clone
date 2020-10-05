@@ -88,7 +88,7 @@ if($stmt->rowCount() == 0){
 
                 Swal.fire({
                     icon: "error",
-                    text: "Password to short!",
+                    text: "Password too short!",
                 }).then(function() {
                     window.location = "register.php";
                 });
