@@ -7,8 +7,8 @@
 
     $passkey = md5(time().$username);
 
-    $query = "INSERT INTO users (passkey) WHERE email=?"
-            . "VALUES (?,?)";
+    $query = "INSERT INTO users (passkey)"
+            . "VALUES (?,?) WHERE email=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$passkey, $email]);
 
