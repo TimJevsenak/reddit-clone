@@ -11,8 +11,8 @@ $stmt = $pdo->prepare($query);
 $stmt->execute([$email]);
 
 if($stmt->rowCount() == 0){
-    $query = "INSERT INTO users (username,email)"
-                        . "VALUES (?,?)";
+    $query = "INSERT INTO users (username,email,pass)"
+                        . "VALUES (?,?,'social')";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$username,$email]);
 

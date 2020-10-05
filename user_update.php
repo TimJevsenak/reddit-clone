@@ -20,7 +20,7 @@
     }
 
     if(empty($password_current)){
-        $password_current = "";
+        $password_current = "social";
     }
     
     if($avatar!=""){
