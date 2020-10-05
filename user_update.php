@@ -2,6 +2,8 @@
     include_once 'header.php';
     include_once 'database.php';
     include_once 'session.php';
+    session_destroy();
+    session_start();
     if(!isset($_SESSION['user_id'])){
         header('location: index.php');
     }
