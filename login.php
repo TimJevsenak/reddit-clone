@@ -8,10 +8,10 @@ include_once 'database.php';
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{950579208754531}',
+      appId      : '950579208754531',
       cookie     : true,
       xfbml      : true,
-      version    : '{v8.0}'
+      version    : 'v8.0'
     });
       
     FB.AppEvents.logPageView();   
