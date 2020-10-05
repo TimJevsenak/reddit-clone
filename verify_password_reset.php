@@ -14,8 +14,8 @@
         <div class="col-lg-4">
             <form action="reset_password.php?id=' . $passkey . '" method="post" class="form-signin">
             <h1 class="h2 my-4 font-weight-normal text-center">Forgot password</h1>
-            <input name="passnew" type="password_new" id="inputEmail" class="form-control my-1" placeholder="New password" required="" autofocus="">
-            <input name="confpass" type="password_confirm" id="inputEmail" class="form-control my-1" placeholder="Confirm password" required="">
+            <input name="passnew" type="password" id="inputEmail" class="form-control my-1" placeholder="New password" required="" autofocus="">
+            <input name="confpass" type="password" id="inputEmail" class="form-control my-1" placeholder="Confirm password" required="">
             <div class="text-center mt-5">
                 <button class="btn btn-primary" type="submit">Reset password</button>
             </div>
