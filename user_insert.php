@@ -40,30 +40,47 @@ if($stmt->rowCount() == 0){
                     $user = $stmt->fetch();
                 }
 
+                mkdir("user-uploads/".$user['id']);
+
                 //send Email
                 $to = $email;
                 $subject = "Email verification";
                 $message = "<a href='http://localhost/read-it/verify_email.php?vkey=$vkey'>Register account</a>";
-                $headers = "From: readit.timjevsenak@gmail.com";
-                $headers .= 'MIME-Version: 1.0' . '\r\n';
-                $headers .= 'Content-type: text/html; charset=iso-8859-1'. '\r\n';
 
-                mkdir("user-uploads/".$user['id']);
-
-                mail($to, $subject, $message, $headers);
-                
+                $fromserver = "noreply@timjevsenak.eu"; 
+                require("PHPMailer/PHPMailerAutoload.php");
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->Host = "mail.timjevsenak.eu"; // Enter your host here
+                $mail->SMTPAuth = true;
+                $mail->Username = "noreply@timjevsenak.eu"; // Enter your email here
+                $mail->Password = "4WS!wCbGtUUf"; //Enter your password here
+                $mail->Port = 25;
+                $mail->IsHTML(true);
+                $mail->From = "noreply@yourwebsite.com";
+                $mail->FromName = "Read-it";
+                $mail->Sender = $fromserver; // indicates ReturnPath header
+                $mail->Subject = $subject;
+                $mail->Body = $message;
+                $mail->AddAddress($to);
+                if(!$mail->Send()){
+                echo "Mailer Error: " . $mail->ErrorInfo;
+                }else{
                 echo '
-                    <script type="text/javascript">
+                <script type="text/javascript">
 
-                    Swal.fire({
-                        icon: "success",
-                        text: "Account added. Please verify your email address.",
-                    }).then(function() {
-                        window.location = "thankyou.php";
-                    });
+                Swal.fire({
+                    icon: "success",
+                    text: "Account added. Please verify your email address.",
+                }).then(function() {
+                    window.location = "thankyou.php";
+                });
 
-                    </script>
-                    ';
+                </script>
+                ';
+                }
+                
+                
             }
             else{
                 echo '
