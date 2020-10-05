@@ -112,7 +112,7 @@
                         </div>
                         <form action="comment_insert.php?id=<?php echo $id ?>" method="POST">
                         <div class="modal-body">
-                            <textarea name="text" class="form-control" rows="3" placeholder="Comment" required=""></textarea>
+                            <textarea name="text" class="form-control" rows="3" placeholder="Comment" required="" pattern="[A-Za-z0-9]+"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="submit">Post your comment</button>
