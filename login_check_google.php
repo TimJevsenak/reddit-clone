@@ -13,8 +13,8 @@ $stmt = $pdo->prepare($query);
 $stmt->execute([$email]);
 
 if($stmt->rowCount() == 0){
-    $query = "INSERT INTO users (username,email,pass)"
-                        . "VALUES (?,?,?)";
+    $query = "INSERT INTO users (username,email,pass,varified)"
+                        . "VALUES (?,?,?,1)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$username,$email,$pass]);
 
