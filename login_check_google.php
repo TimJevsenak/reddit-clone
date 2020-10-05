@@ -10,7 +10,7 @@ $query = "SELECT * FROM users WHERE email=?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$email]);
 
-if($stmt->rowCount() == 1){
+if($stmt->rowCount() == 0){
     $query = "INSERT INTO users (username,email)"
                         . "VALUES (?,?)";
     $stmt = $pdo->prepare($query);
