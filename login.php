@@ -13,6 +13,8 @@ include_once 'header.php';
                 <input name="password" type="password" id="inputPassword" class="form-control my-1" placeholder="Password" required="">
                 <div class="text-center mt-5">
                     <button class="btn btn-primary" type="submit">Sign in</button>
+                    <h2 class="my-4">OR</h2>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </div>
             </form>
             <div class="mt-5">

@@ -6,6 +6,7 @@ include_once './session.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="83765887749-j0ets08rou0pa7fkc1fi3i81u95o0rmn.apps.googleusercontent.com">
     <title>read-it</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -14,6 +15,7 @@ include_once './session.php';
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://kit.fontawesome.com/9546f008dc.js" crossorigin="anonymous"></script>
     <script src="icons.js" defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #232323;">
