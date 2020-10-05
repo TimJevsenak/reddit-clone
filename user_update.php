@@ -18,6 +18,10 @@
     {
         header('location: index.php');
     }
+
+    if(empty($password_current)){
+        $password_current = "";
+    }
     
     if($avatar!=""){
         if($password_new == $password_new_confirm)
