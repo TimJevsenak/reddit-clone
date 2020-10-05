@@ -45,7 +45,7 @@ if($stmt->rowCount() == 0){
                 //send Email
                 $to = $email;
                 $subject = "Email verification";
-                $message = "<a href='http://localhost/read-it/verify_email.php?vkey=$vkey'>Register account</a>";
+                $message = "<a href='https://timjevsenak.eu/verify_email.php?vkey=$vkey'>Register account</a>";
 
                 $fromserver = "noreply@timjevsenak.eu"; 
                 require("PHPMailer/PHPMailerAutoload.php");

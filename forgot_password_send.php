@@ -7,14 +7,14 @@
 
     $passkey = md5(time().$username);
 
-    $query = "INSERT INTO users (passkey)"
+    $query = "INSERT INTO users (passkey) WHERE email=?"
             . "VALUES (?)";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$passkey]);
+    $stmt->execute([$passkey, $email]);
 
     $to = $email;
     $subject = "Reset Password!";
-    $message = "<a href='http://localhost/read-it/verify_password_reset.php?passkey=$passkey'>Reset password</a>";
+    $message = "<a href='https://timjevsenak.eu/verify_password_reset.php?passkey=$passkey'>Reset password</a>";
 
     $fromserver = "noreply@timjevsenak.eu"; 
     require("PHPMailer/PHPMailerAutoload.php");
