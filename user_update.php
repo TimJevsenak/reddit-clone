@@ -14,7 +14,7 @@
     $displayname=$_POST['displayName'];
     $descripton=$_POST['description'];
     $avatar=$_FILES["image"]["name"];
-    if(empty($username) || empty($email) || empty($password_current))
+    if(empty($username) || empty($email))
     {
         header('location: index.php');
     }

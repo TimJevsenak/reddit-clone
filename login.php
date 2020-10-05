@@ -21,7 +21,7 @@ include_once 'database.php';
                     <div class="g-signin2 btn" data-onsuccess="onSignIn"></div>
                 </div>
             </form>
-            <form method="post" id="theForm" action="index.php">
+            <form method="post" id="theForm" action="login_check_google.php">
                 <input id="username" type="hidden" name="username" value="John">
                 <input id="email" type="hidden" name="email" value="2pm">
             </form>
@@ -46,6 +46,7 @@ include_once 'database.php';
         $('#email').val(profile.getEmail());
     });
     document.getElementById('theForm').submit();
+    gapi.auth2.getAuthInstance().disconnect();
 }
 </script>
 
