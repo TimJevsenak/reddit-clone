@@ -13,7 +13,7 @@ if(!isset($_SESSION['user_id'])){
         <div class="col-4 mt-5">
         <a href="profile.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         </div>
-        <div class="col-4 my-5 text-right">
+        <div class="col-lg-4 my-5 text-right">
             <form class="form-signin" action="post_insert.php" method="post" enctype="multipart/form-data">
                 <h1 class="h2 mb-4 font-weight-normal text-center">Write a post</h1>
                 <input name="title" type="text" class="form-control my-1" placeholder="Title" required="" autofocus="">

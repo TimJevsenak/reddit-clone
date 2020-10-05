@@ -18,7 +18,7 @@
         <div class="col-4 mt-5">
             <a href="community_list.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         </div>
-        <div class="col-4 my-5">
+        <div class="col-lg-4 my-5">
         <form class="form-signin" action="community_update.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
             <h1 class="h2 mb-4 font-weight-normal text-center">Update community</h1>
