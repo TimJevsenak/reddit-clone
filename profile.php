@@ -25,7 +25,7 @@ if(!isset($_SESSION['user_id'])){
         <div class="col-4 mt-5">
         <a href="index.php"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         </div>
-        <div class="col-4 my-5 text-right">
+        <div class="col-lg-4 my-5 text-right">
             <form class="form-signin" action="user_update.php" method="post" enctype="multipart/form-data">
                 <h1 class="h2 mb-4 font-weight-normal text-center">Update profile</h1>
                 <label for="inputEmail" class="sr-only">Email address</label>
