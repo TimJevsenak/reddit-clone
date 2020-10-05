@@ -16,6 +16,12 @@ if($stmt->rowCount() == 0){
     $stmt = $pdo->prepare($query);
     $stmt->execute([$username,$email]);
 
+    $query = "SELECT * FROM users WHERE email=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$email]);
+
+    $user = $stmt->fetch();
+
     $_SESSION['user_id'] = $user['id']; 
     $_SESSION['username'] = $user['username']; 
     $_SESSION['email'] = $user['email'];

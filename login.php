@@ -21,10 +21,6 @@ include_once 'database.php';
                     <div class="g-signin2 btn" data-onsuccess="onSignIn"></div>
                 </div>
             </form>
-            <form method="post" id="theForm" action="login_check_google.php">
-                <input id="username" type="hidden" name="username" value="John">
-                <input id="email" type="hidden" name="email" value="2pm">
-            </form>
             <div class="mt-5">
             <a class="mt-5" href="register.php">Don't have an account?</a><br>
             <a class="my-2" href="forgot_password.php">Forgot password?</a>
@@ -39,13 +35,13 @@ include_once 'database.php';
     var profile = googleUser.getBasicProfile();
     console.log('Name: ' + profile.getName());
     console.log('Email: ' + profile.getEmail());
-    $(function () {
-        $('#username').val(profile.getName());
-    });
-    $(function () {
-        $('#email').val(profile.getEmail());
-    });
-    document.getElementById('theForm').submit();
+    var form = $('<form action="login_check_google.php" method="post">' +
+            '<input type="text" name="email" value="' + profile.getEmail() + '" />'
+            +
+            '<input type="text" name="username" value="' + profile.getName() + '" />'+
+            '</form>');
+            $('body').append(form);
+            form.submit();
     gapi.auth2.getAuthInstance().disconnect();
 }
 </script>
