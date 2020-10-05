@@ -5,7 +5,7 @@
 
     $email = $_POST['email'];
 
-    $passkey = md5(time().$username);
+    $passkey = md5(time().$email);
 
     $query = "INSERT INTO users (passkey)"
             . "VALUES (?,?) WHERE email=?";
