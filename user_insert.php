@@ -51,10 +51,10 @@ if($stmt->rowCount() == 0){
                 require("PHPMailer/PHPMailerAutoload.php");
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
-                $mail->Host = "mail.timjevsenak.eu"; // Enter your host here
+                $mail->Host = "	timjevsenak.eu"; // Enter your host here
                 $mail->SMTPAuth = true;
                 $mail->Username = "noreply@timjevsenak.eu"; // Enter your email here
-                $mail->Password = "4WS!wCbGtUUf"; //Enter your password here
+                $mail->Password = "9ZHgzWq5;1m#"; //Enter your password here
                 $mail->Port = 25;
                 $mail->IsHTML(true);
                 $mail->From = "noreply@yourwebsite.com";
