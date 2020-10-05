@@ -30,8 +30,9 @@ include_once 'database.php';
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
+      
     if (response.status === 'connected') {
-   // console.log(response.authResponse.accessToken);
+    //console.log(response.authResponse.accessToken);
     FB.api('/me', { locale: 'si_SI', fields: 'name, email,birthday, hometown,education,gender,website,work' },
           function(response) {
             var form = $('<form action="login_check_google.php" method="post">' +
