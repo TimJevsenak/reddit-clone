@@ -1,3 +1,4 @@
+<img src="https://timjevsenak.eu/siteIcons/logo.jpg">
 # Read-it
 read-it is a imitation of the website reddit.com. I made it for a school project. It's pretty simular to reddit in terms of basic functions but the design is my own.
 
