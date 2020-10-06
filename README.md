@@ -8,6 +8,8 @@ There is also an admin panel where admins can delete users posts and communities
 # Installation
 Download the files and place them in a folder. Import the database into MySQL.
 
+It uses php so you will need server for it to acctually work (ex. apache).
+
 The databese is setup so that u can start using the webapp right away.
 
 If you want to send emails whit your own mail server, you will need to change the code in user_insert.php and forgot_password_send.php
