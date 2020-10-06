@@ -103,7 +103,7 @@ $stmt->execute([$_SESSION['user_id']]);
                           <h4 class="px-4">' . $post['title'] . '</h4>
                         </div>
                         <div class="col-md-3 text-md-right px-4">
-                        By <span class="text-muted"> u/</span>' . $post['username'] . '
+                        By <a href="profile_show.php?user='.$post['username'].'"><span class="text-muted"> u/</span>' . $post['username'] . '</a>
                         </div>
                       </div>
                     </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
@@ -171,7 +171,7 @@ $stmt->execute([$_SESSION['user_id']]);
                           <h4 class="px-4">' . $post['title'] . '</h4>
                         </div>
                         <div class="col-md-3 text-md-right px-4">
-                        By <span class="text-muted"> u/</span>' . $post['username'] . '
+                        By <a href="profile_show.php?user='.$post['username'].'"><span class="text-muted"> u/</span>' . $post['username'] . '</a>
                         </div>
                       </div>
                     </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
@@ -239,7 +239,7 @@ $stmt->execute([$_SESSION['user_id']]);
                           <h4 class="px-4">' . $post['title'] . '</h4>
                         </div>
                         <div class="col-md-3 text-md-right px-4">
-                        By <span class="text-muted"> u/</span>' . $post['username'] . '
+                        By <a href="profile_show.php?user='.$post['username'].'"><span class="text-muted"> u/</span>' . $post['username'] . '</a>
                         </div>
                       </div>
                     </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';

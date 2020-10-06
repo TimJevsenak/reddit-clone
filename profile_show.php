@@ -3,18 +3,18 @@
     include_once 'session.php';
     include_once 'database.php';
 
-    $id = $_GET['id'];
+    $user = $_GET['user'];
 
-    $query = "SELECT * FROM users WHERE id=?";
+    $query = "SELECT * FROM users WHERE username=?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$id]);
+    $stmt->execute([$user]);
     if($stmt->rowCount()!=1){
         header('location: index.php');
     }
     
-    $query = "SELECT * FROM users WHERE id=?";
+    $query = "SELECT * FROM users WHERE username=?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$id]);
+    $stmt->execute([$user]);
     $user = $stmt->fetch();
 ?>
 
