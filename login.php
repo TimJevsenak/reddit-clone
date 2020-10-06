@@ -66,7 +66,7 @@ function checkLoginState() {
                     <button class="btn btn-primary" type="submit">Sign in</button>
                     <h5 class="my-4">OR</h5>
                     <div class="g-signin2 btn" data-onsuccess="onSignIn"></div>
-                    <div class="fb-login-button col-5 btn" scope="public_profile,email"
+                    <div class="fb-login-button btn" scope="public_profile,email"
                     onlogin="checkLoginState();" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div> 
                 </div>
             </form>
