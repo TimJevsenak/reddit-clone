@@ -68,12 +68,12 @@
 
     $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
     $stmt2 = $pdo->prepare($query2);
-    $stmt2->execute([$id,1]);
+    $stmt2->execute([$user['id'],1]);
     $upvotes = $stmt2->rowCount();
 
     $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
     $stmt2 = $pdo->prepare($query2);
-    $stmt2->execute([$id,0]);
+    $stmt2->execute([$user['id'],0]);
     $downvotes = $stmt2->rowCount();
 
     $votes = $upvotes - $downvotes;
