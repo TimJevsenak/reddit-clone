@@ -65,100 +65,15 @@
         <div class="col-4"></div>
     </div>
 <?php
-    $query = "SELECT DISTINCT p.id, p.title, p.post, p.image, p.date, p.community_id, c.name, c.icon, u.username
-       FROM posts p INNER JOIN communities c ON p.community_id=c.id INNER JOIN subscriptions s ON s.community_id=c.id INNER JOIN users u ON p.user_id=u.id
-       WHERE s.user_id=?
-       ORDER BY p.date DESC";
-      $stmt = $pdo->prepare($query);
-      $stmt->execute([$id]);
+    $query = "SELECT * FROM posts WHERE user_id=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$user['id']]);
+    while($st < $stmt->rowCount()){
+        $post = $stmt->fetch();
+        echo '<h3>'.$.'</h3>';
+        $st++;
+    }
 ?>
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-2">
-        </div>
-        <div class="col-8 text-center">
-            <h3 class="my-5">Posts</h3>
-            <?php 
-                if($stmt->rowCount() > 0) {
-                    while($st < $stmt->rowCount()) {
-                        $post = $stmt->fetch();
-                        $date = time_elapsed_string($post['date']);
-
-                        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
-                        $stmt2 = $pdo->prepare($query2);
-                        $stmt2->execute([$post['id'],1]);
-                        $upvotes = $stmt2->rowCount();
-
-                        $query2 = "SELECT * FROM post_votes WHERE post_id=? AND upvote=?";
-                        $stmt2 = $pdo->prepare($query2);
-                        $stmt2->execute([$post['id'],0]);
-                        $downvotes = $stmt2->rowCount();
-
-                        $votes = $upvotes - $downvotes;
-                        if($votes <= 0){
-                        $color="text-primary";
-                        }
-                        else{
-                        $color="text-danger";
-                        }
-
-                        echo '
-                        <div id="' . $post['id'] . '" class="mt-5">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-title my-2">
-                            <div class="row">
-                                <div class="col-md-3 text-md-left px-4">
-                                <img src="community-uploads/' . $post['community_id'] . '/' . $post['icon'] .'" class="img-fluid" width="32" height="32" style="border-radius: 50%;">
-                                <span class="text-muted">r/</span>' . $post['name'] . '
-                                </div>
-                                <div class="col-md-6 text-md-center">
-                                <h4 class="px-4">' . $post['title'] . '</h4>
-                                </div>
-                                <div class="col-md-3 text-md-right px-4">
-                                By <a href="profile_show.php?user='.$post['username'].'"><span class="text-muted"> u/</span>' . $post['username'] . '</a>
-                                </div>
-                            </div>
-                            </div><a href="post_show.php?id='. $post['id'] . '" style="color: black; text-decoration: none;">';
-                            if($post['image']!=""){
-                            echo '<img src="post-uploads/' . $post['id'] . '/' . $post['image'] .'" class="img-fluid" width="100%" height="100%">';
-                            }
-                            echo '<div class="card-body">
-                            <p class="card-text" style="overflow: hidden; height: 6rem;">' . $post['post'] . '</p></a>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=1&cid=' . $post['community_id'] . '" class="text-danger" style="text-decoration: none;"><i class="far fa-arrow-square-up fa-2x mx-1"></i></a> <span class="font-weight-bold mx-2 ' . $color . '">' . $votes . '</span>
-                                <a href="community_show_vote_insert.php?id=' . $post['id'] . '&upvote=0&cid=' . $post['community_id'] . '" class="text-primary" style="text-decoration: none;"><i class="far fa-arrow-square-down mx-1 fa-2x"></i></a>
-                                <a href="post_show.php?id=' . $post['id'] . '#bottom" class="text-dark ml-5" style="text-decoration: none;"><i class="fal fa-comment-lines fa-2x"></i></a>
-                                </div>
-                                <small class="text-muted">' . $date . '</small>
-                            </div>
-                            </div>
-                        </div>
-                        </div>';
-                        $st++;
-                    }
-                  } 
-                  else {
-                        echo '<div class="alert alert-info mt-5" role="alert">
-                        This community has no posts yet.
-                        </div>';
-                    }
-            ?>
-        </div>
-        <div class="col-2">
-            <?php
-                if(isset($_SESSION['user_id'])){
-                echo '<p class="font-weight-bold">MEMBERS:' . $subs . '</p>
-                <a href="' . $link . '?id=' . $id . '"><button type="button" class="btn btn-outline-danger">' . $join . '</button></a>';
-                }
-                else {
-                    echo '<a href="index.php" style="color: black;"><i class="fas fa-home-lg-alt"></i></a>';
-                }
-            ?>          
-        </div>
-    </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
