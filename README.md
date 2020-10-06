@@ -1,7 +1,7 @@
 # Read-it
 read-it is a imitation of the website reddit.com. I made it for a school project. It's pretty simular to reddit in terms of basic functions but the design is my own.
 
-# Description
+# Features
 Read-it is a social media platform where users can create communities, shere their posts and comment. You can uploade your images and customise your profile. 
 There is also an admin panel where admins can delete users posts and communities.
 
