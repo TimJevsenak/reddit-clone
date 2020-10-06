@@ -26,6 +26,7 @@
                     echo '<img src="user-uploads/'.$user['id'].'/'.$user['avatar'].'" class="img-fluid img-thumbnail" width="64" height="64"';
                 }
             ?>  
+            <br>
             <h3><?php echo $user['username'] ?></h3>
             <h5><?php echo $user['displayname'] ?></h5>
             <small class="text-muted">Maybe send an email: <?php echo $user['email'] ?></small>
