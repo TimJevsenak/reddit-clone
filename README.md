@@ -16,7 +16,7 @@ If you want to send emails whit your own mail server, you will need to change th
 
 If you want to use the Google and Facebook login, you will have to request your own API key for both of them. Once you do that and replace it, it should work.
 
-# Usage
+# Setup
 Just log in and if your database is set correctly you are good to go!
 
 # Contributing
