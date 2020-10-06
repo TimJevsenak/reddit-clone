@@ -12,33 +12,14 @@
     $st3 = 0;
 
     if($_SESSION['admin']){
-        $query = "DELETE FROM comment_votes WHERE user_id=?";
+        $query = "SELECT * FROM communities WHERE user_id=?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$id]);
-
-        $query = "DELETE FROM comments WHERE user_id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
-
-        $query = "DELETE FROM post_votes WHERE user_id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
-
-        $query = "DELETE FROM posts WHERE user_id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
-
-        $query = "DELETE FROM subscriptions WHERE user_id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
-
-        $query = "DELETE FROM communities WHERE user_id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
-
-        $query = "DELETE FROM users WHERE id=?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$id]);
+        $query2 = "SELECT * FROM posts WHERE user_id=?";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$id]);
+        
+        if($stmt->rowCount() == 0 && $stmt->rowCount() == 0){
 
         array_map('unlink', glob("user-uploads/$id/*.*"));
         rmdir("user-uploads/$id");
@@ -55,6 +36,22 @@
 
         </script>
         ';
+        }
+        else{
+            echo '
+        <script type="text/javascript">
+
+        Swal.fire({
+            icon: "error",
+            text: "Cant delete user. Please make sure thaht all posts & communities of the uer are deleted!",
+        }).then(function() {
+            window.location = "admin.php";
+        });
+
+        </script>
+        ';
+        }
+        
     }
     else{
         header('location: index.php');
