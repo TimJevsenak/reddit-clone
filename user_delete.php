@@ -20,6 +20,9 @@
         $stmt2->execute([$id]);
         
         if($stmt->rowCount() == 0 && $stmt->rowCount() == 0){
+            $query = "SDELETE FROM users WHERE id=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$id]);
 
         array_map('unlink', glob("user-uploads/$id/*.*"));
         rmdir("user-uploads/$id");
