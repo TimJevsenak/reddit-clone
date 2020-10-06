@@ -87,6 +87,7 @@
     $query = "SELECT p.id, p.title, p.post, p.date, p.community_id, p.image, c.name, c.icon FROM posts p INNER JOIN communities c ON c.id=p.community_id WHERE p.user_id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$user['id']]);
+    echo '<div class="row mt-5"><div class="col-2"></div><div class="col-lg-8">';
     while($st < $stmt->rowCount()){
         $post = $stmt->fetch();
         echo '
@@ -122,6 +123,7 @@
         </div>';
         $st++;
     }
+    echo '</div><div class="col-2></div></div>"';
 ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
