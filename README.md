@@ -1,7 +1,7 @@
 <img src="https://timjevsenak.eu/siteIcons/logo.jpg">
 
 # Read-it
-read-it is an imitation of the website reddit.com. I made it for a school project. It's pretty similar to reddit in terms of basic functions but the design is my own.
+Read-it is an imitation of the website reddit.com. I made it for a school project. It's pretty similar to reddit in terms of basic functions but the design is my own.
 
 # Features
 Read-it is a social media platform where users can create communities, share their posts and comment. You can upload your images and customise your profile. 
