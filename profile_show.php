@@ -6,6 +6,35 @@
     $st = 0;
     $user = $_GET['user'];
 
+    function time_elapsed_string($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+      
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+      
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+      
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+      }
+
     $query = "SELECT * FROM users WHERE username=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$user]);
@@ -47,17 +76,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-2">
-            <?php 
-                if(isset($_SESSION['user_id'])){
-                    echo '<a href="javascript:history.back()"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>';
-                }
-            ?>
         </div>
         <div class="col-8 text-center">
-            <p class="my-2"><img src="community-uploads/<?php echo $community['id'] . "/" . $community['icon']; ?>" class="img-fluid img-thumbnail" width="64" height="64"></p>
-            <h2 class="my-2"><?php echo $community['name']; ?></h2>
-            <h5 class="mt-5 mb-2"><?php echo $community['title']; ?></h5>
-            <p class="my-3"><?php echo $community['description'] ?></p>
             <h3 class="my-5">Posts</h3>
             <?php 
                 if($stmt->rowCount() > 0) {
