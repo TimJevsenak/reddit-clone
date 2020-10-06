@@ -84,7 +84,7 @@
     $color="text-danger";
     }
 
-    $query = "SELECT p.id, p.title, p.post, p.date, p.community_id, p.image, c.name, c.icon FROM posts p INNER JOIN communities c ON WHERE p.user_id=?";
+    $query = "SELECT p.id, p.title, p.post, p.date, p.community_id, p.image, c.name, c.icon FROM posts p INNER JOIN communities c ON c.id=p.community_id WHERE p.user_id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$user['id']]);
     while($st < $stmt->rowCount()){
