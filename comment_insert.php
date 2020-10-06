@@ -10,7 +10,7 @@
 
     $text = htmlentities($text);
     $text = preg_replace('/\[([a-zA-Z0-9\/\.\-_:\?,\=\s]+)\]\((ftp:\/\/|irc:\/\/|ircs:\/\/|http:\/\/|https:\/\/)([a-zA-Z0-9\/\.\-_:\?,\=]+)\)/i', '<a href="$2$3" target=_new>$1</a>', $text);
-    $text = preg_replace('/&lt;strong&gt;(.*)&lt;\/strong&gt;/', '<strong>$1</strong>', $text);
+    $text = preg_replace('/\*\*([a-zA-Z0-9\/\.\-_:\?,\=\s\)\(\*\&\^\!\@\#\$\%\^\+\=\`\~\{\}\[\]]+)\*\*/i', '<strong>$1</strong>', $text);
     $text = preg_replace('/\-\-([a-zA-Z0-9\/\.\-_:\?,\=\s\)\(\*\&\^\!\@\#\$\%\^\+\=\`\~\{\}\[\]]+)\-\-/i', '<del>$1</del>', $text);
     $text = preg_replace('/\`([a-zA-Z0-9\/\.\-_:\?,\=\s\)\(\*\&\^\!\@\#\$\%\^\+\=\`\~\{\}\[\]]+)\`/i', '<code>$1</code>', $text);
     $text = preg_replace('/\~\~([a-zA-Z0-9\/\.\-_:\?,\=\s\)\(\*\&\^\!\@\#\$\%\^\+\=\`\~\{\}\[\]]+)\~\~/i', '<em>$1<\em>', $text);
