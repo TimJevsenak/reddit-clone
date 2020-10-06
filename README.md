@@ -25,6 +25,6 @@ Just log in and if your database is set correctly you are good to go!
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 # Language
-The website is ment for english speaking users.
+The website is in english.
 
 Backend is also fully english.
