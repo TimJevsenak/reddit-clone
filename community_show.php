@@ -35,12 +35,12 @@
     $subs = $stmt->rowCount();
 
     if($subed == 1){
-        $disabled = 'disabled';
-        $join = 'JOINED';
+        $join = 'UNSUB';
+        $link = 'subscription_cancel.php';
     }
     else{
-        $disabled = '';
         $join = 'JOIN';
+        $link = 'subscription.php';
     }
     function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
@@ -167,7 +167,7 @@
             <?php
                 if(isset($_SESSION['user_id'])){
                 echo '<p class="font-weight-bold">MEMBERS:' . $subs . '</p>
-                <a href="subscription.php?id=' . $id . '"><button type="button" class="btn btn-outline-danger"' . $disabled . '>' . $join . '</button></a>';
+                <a href="' . $link . '?id=' . $id . '"><button type="button" class="btn btn-outline-danger">' . $join . '</button></a>';
                 }
                 else {
                     echo '<a href="index.php" style="color: black;"><i class="fas fa-home-lg-alt"></i></a>';
