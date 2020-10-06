@@ -23,7 +23,7 @@
         <div class="col-lg-4">
             <?php 
                 if($user['avatar'] != ""){
-                    echo '<img src="user-uploads/'.$user['id'].'/'.$user['avatar'].'"';
+                    echo '<img src="user-uploads/'.$user['id'].'/'.$user['avatar'].'" class="img-fluid img-thumbnail" width="64" height="64"';
                 }
             ?>  
             <h3><?php echo $user['username'] ?></h3>
