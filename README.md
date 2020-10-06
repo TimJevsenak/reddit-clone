@@ -1,18 +1,18 @@
 <img src="https://timjevsenak.eu/siteIcons/logo.jpg">
 
 # Read-it
-read-it is a imitation of the website reddit.com. I made it for a school project. It's pretty simular to reddit in terms of basic functions but the design is my own.
+read-it is an imitation of the website reddit.com. I made it for a school project. It's pretty similar to reddit in terms of basic functions but the design is my own.
 
 # Features
-Read-it is a social media platform where users can create communities, shere their posts and comment. You can uploade your images and customise your profile. 
-There is also an admin panel where admins can delete users posts and communities.
+Read-it is a social media platform where users can create communities, share their posts and comment. You can upload your images and customise your profile. 
+There is also an admin panel where admins can delete users, posts and communities.
 
 # Installation
 Download the files and place them in a folder. Import the database into MySQL.
 
-It uses php so you will need server for it to acctually work (ex. apache).
+It uses php so you will need server for it to actually work (ex. apache).
 
-The databese is setup so that u can start using the webapp right away.
+The database is setup so that you can start using the web app right away.
 
 If you want to send emails whit your own mail server, you will need to change the code in user_insert.php and forgot_password_send.php
 
