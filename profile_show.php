@@ -18,7 +18,7 @@
     $user = $stmt->fetch();
 ?>
 
-    <div class="row text-center">
+    <div class="row text-center mt-5">
         <div class="col-4"></div>
         <div class="col-lg-4">
             <?php 
