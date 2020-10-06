@@ -8,7 +8,7 @@
     $community_id = $_GET['id'];
     $user_id = $_SESSION['user_id'];
 
-    $query = "DELETE FROM subscriptions WHERE community_id=?, user_id=?";
+    $query = "DELETE FROM subscriptions WHERE community_id=? AND user_id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$community_id, $user_id]);
 
